@@ -42,7 +42,7 @@ package com.giantmo.bananas
 		private function deactivate(e:flash.events.Event):void 
 		{
 			// auto-close
-			NativeApplication.nativeApplication.exit();
+			//NativeApplication.nativeApplication.exit();
 		}
 		
 		protected function main_addedToStageHandler(event : flash.events.Event) : void

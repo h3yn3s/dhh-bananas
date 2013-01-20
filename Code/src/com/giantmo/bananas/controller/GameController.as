@@ -13,6 +13,7 @@ package com.giantmo.bananas.controller
 	import com.giantmo.bananas.view.CloudView;
 	import com.giantmo.bananas.view.ExplosionView;
 	import com.giantmo.bananas.view.GorillaView;
+	import starling.utils.deg2rad;
 	
 	import flash.geom.Point;
 	import flash.geom.Rectangle;
@@ -55,7 +56,7 @@ package com.giantmo.bananas.controller
 			Starling.juggler.add( this );
 			
 			// initialize other controllers			
-			_movementController = new MovementController( _model.banana, _model.clouds, _model.wind, _model.bananaThrow );
+			_movementController = new MovementController( _model.banana, _model.clouds, _model.wind, _model.bananaThrow, _model.gorillas );
 			
 			_collisionController = new CollisionController( _model.banana, _model.gorillas, _model.buildings, _model.clouds, _model.explosions, Constants.WORLD_BOUNDARY );
 			_collisionController.addEventListener(BananasEvent.BANANA_COLLISION_OUT_OF_WORLD, collision_bananaOutOfWorld);
@@ -89,7 +90,7 @@ package com.giantmo.bananas.controller
 			}*/
 			
 			// move objects
-			_movementController.tick( time, _model.bananaThrow.bananaFlying );
+			_movementController.tick( time );
 			
 			// object collision
 			_collisionController.tick(_model.bananaThrow.bananaFlying);
@@ -259,7 +260,7 @@ package com.giantmo.bananas.controller
 			
 			view.data = gorilla;
 			// add powerBar model also (the gorilla needs to know about the angle of the power bar)
-			view.powerBarData = _model.powerBar;
+			view.bananaThrowData = _model.bananaThrow;			
 			
 			view.update();
 			_bananas.addGorilla( view );
@@ -426,6 +427,20 @@ package com.giantmo.bananas.controller
 				
 				_model.powerBar.aimingAngle = _model.bananaThrow.aimingAngle;
 				_model.powerBar.aimingForce = _model.bananaThrow.aimingForce;
+				
+				// modify the angle of the gorilla arm
+				// draw arm, if player is inactive
+				if (_model.getActiveGorilla().id == 0)
+				{					
+					_model.getActiveGorilla().armAngle = _model.powerBar.aimingAngle; // angle applies to rotation
+					// step 2: add 180° to the powerBar angle
+					_model.getActiveGorilla().armAngle += deg2rad(180);					
+				} else {
+					_model.getActiveGorilla().armAngle = (-1 * _model.powerBar.aimingAngle); // angle applies to rotation
+				}				
+					
+				// step 3: convert the "power" of the bar into angle as well
+				_model.getActiveGorilla().armAngle -= ( _model.powerBar.aimingForce * 2 );
 			}
 		}
 

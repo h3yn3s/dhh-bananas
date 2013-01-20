@@ -19,7 +19,8 @@ package com.giantmo.bananas.model
 		// PROPERTIES
 		public var id : int;
 		public var lives : int;
-		public var armPoint : Point;
+		//public var armPoint : Point;
+		public var armAngle : Number;		
 		
 		/** Flag if the gorilla is currently the one allowed to play. */
 		public var active : Boolean;
@@ -31,6 +32,7 @@ package com.giantmo.bananas.model
 		{
 			bounds = new Rectangle();
 			lives  = 3;
+			armAngle = 0;
 		}
 		
 	}

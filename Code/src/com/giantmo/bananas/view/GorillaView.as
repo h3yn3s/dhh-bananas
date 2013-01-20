@@ -1,6 +1,7 @@
 package com.giantmo.bananas.view 
 {
 	import com.giantmo.bananas.model.Assets;
+	import com.giantmo.bananas.model.BananaThrow;
 	import com.giantmo.bananas.model.Gorilla;
 	import com.giantmo.bananas.model.PowerBar;
 	import starling.utils.deg2rad;
@@ -17,9 +18,9 @@ package com.giantmo.bananas.view
 	{
 		// Gorilla data object
 		public var data : Gorilla;
-		
-		// PowerBar data object
-		public var powerBarData : PowerBar;
+				
+		// BananaThrow data object
+		public var bananaThrowData : BananaThrow;
 		
 		// display object
 		// private var _quad : Quad;
@@ -83,34 +84,28 @@ package com.giantmo.bananas.view
 				_livesDisplays[idx].visible = idx + 1 <= data.lives; 
 			}
 			
-			// draw arm, if player is inactive
 			if (data.active) 
-			{
-				// switch display of arms
-				_gorillaArmBanana.visible = true;
-				_gorillaArm.visible = false;
-				
-				// change arm with banana angle based on powerBar
-				// step 1: apply the angle of the powerBar
-				if ( powerBarData.gorillaIsAiming) {
-					if ( data.id == 0 ) {					
-						_gorillaArmBanana.rotation = powerBarData.aimingAngle; // angle applies to rotation
-						// step 2: add 180° to the powerBar angle
-						_gorillaArmBanana.rotation += deg2rad(180);					
-					} else {
-						_gorillaArmBanana.rotation = (-1 * powerBarData.aimingAngle); // angle applies to rotation
-					}				
-					
-					// step 3: convert the "power" of the bar into angle as well
-					_gorillaArmBanana.rotation -= ( powerBarData.aimingForce * 2 );
-				}				
-				
+			{				
+				if (bananaThrowData.inDragPhase)
+				{
+					_gorillaArm.visible = false;
+					_gorillaArmBanana.visible = true;
+					_gorillaArmBanana.rotation = data.armAngle;
+				} else if (bananaThrowData.bananaFlying) {
+					_gorillaArm.visible = true;
+					_gorillaArmBanana.visible = false;
+					_gorillaArm.rotation = data.armAngle;
+				} else { // banana "hanging"
+					_gorillaArm.visible = false;
+					_gorillaArmBanana.visible = true;
+					_gorillaArmBanana.rotation = data.armAngle;
+				}
 			} else {
-				// switch display of arms
 				_gorillaArm.visible = true;
 				_gorillaArmBanana.visible = false;
 				_gorillaArmBanana.rotation = 0;
-			}
+				_gorillaArm.rotation = data.armAngle;
+			}		
 						
 			this.x = data.bounds.x;
 			this.y = data.bounds.y;

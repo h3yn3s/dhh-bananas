@@ -4,7 +4,9 @@ package com.giantmo.bananas.controller
 	import com.giantmo.bananas.model.BananaThrow;
 	import com.giantmo.bananas.model.Cloud;
 	import com.giantmo.bananas.model.Constants;
+	import com.giantmo.bananas.model.Gorilla;
 	import com.giantmo.bananas.model.Wind;
+	import starling.utils.rad2deg;
 	
 	import starling.events.EventDispatcher;
 	import starling.utils.deg2rad;
@@ -18,18 +20,20 @@ package com.giantmo.bananas.controller
 		private var _clouds : Vector.<Cloud>;
 		private var _wind : Wind;
 		private var _bananaThrow : BananaThrow;
+		private var _gorillas : Vector.<Gorilla>;
 		
-		public function MovementController(banana : Banana, clouds : Vector.<Cloud>, wind : Wind, bananaThrow : BananaThrow) 
+		public function MovementController(banana : Banana, clouds : Vector.<Cloud>, wind : Wind, bananaThrow : BananaThrow, gorilla : Vector.<Gorilla> ) 
 		{
 			_banana = banana;
 			_clouds = clouds;
 			_wind = wind;
 			_bananaThrow = bananaThrow;
+			_gorillas = gorilla;
 		}
 		
-		public function tick(timePassed : Number, bananaFlying : Boolean) : void
+		public function tick(timePassed : Number) : void
 		{
-			if (bananaFlying)
+			if (_bananaThrow.bananaFlying)
 			{
 				// change velocity based on "gravity"
 				_bananaThrow.velocity.y += (Constants.GRAVITY * timePassed);
@@ -48,7 +52,30 @@ package com.giantmo.bananas.controller
 			{
 				cloud.position.x += _wind.force * timePassed;
 			}
+			
+			// move the arm of the gorilla back in position			
+			for (var idx : int = 0; idx < _gorillas.length; idx++)
+			{
+				if (_gorillas[idx].active) 
+				{
+					if (!_bananaThrow.inDragPhase && _bananaThrow.bananaFlying)
+					{	
+						if (Math.abs(rad2deg(_gorillas[idx].armAngle) % 360) > 10) 
+						{
+							_gorillas[idx].armAngle += deg2rad(Constants.GORILLA_ARM_REPOSITION_SPEED * timePassed);
+						} else {
+							_gorillas[idx].armAngle = 0;
+						}
+					}
+				} else {					
+					if (Math.abs(rad2deg(_gorillas[idx].armAngle) % 360) > 10) 
+					{
+						_gorillas[idx].armAngle += deg2rad(Constants.GORILLA_ARM_REPOSITION_SPEED * timePassed);						
+					} else {
+						_gorillas[idx].armAngle = 0;
+					}
+				}
+			}
 		}
 	}
-
 }
