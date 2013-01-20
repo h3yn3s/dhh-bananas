@@ -17,7 +17,8 @@ package com.giantmo.bananas.view
 		public var data : Gorilla;		
 		
 		// display object
-		private var _quad : Quad;
+		// private var _quad : Quad;
+		private var _gorilla : Image;
 		
 		// lives display
 		private var _livesDisplays : Vector.<Image>;
@@ -28,8 +29,12 @@ package com.giantmo.bananas.view
 		public function GorillaView() 
 		{
 			// create gorilla
-			_quad = new Quad(Gorilla.WIDTH, Gorilla.HEIGHT, 0x00ff00);
-			this.addChild( _quad );
+			_gorilla = new Image( Assets.gorilla );			
+			_gorilla.height = Gorilla.HEIGHT;
+			_gorilla.width = Gorilla.WIDTH;
+			
+			// _quad = new Quad(Gorilla.WIDTH, Gorilla.HEIGHT, 0x00ff00);
+			this.addChild( _gorilla );
 			
 			// create lives displays
 			_livesDisplays = new Vector.<Image>(3);
@@ -54,7 +59,7 @@ package com.giantmo.bananas.view
 			}
 			
 			// set active color
-			_quad.color = data.active ? 0x00ff00 : 0x004400;
+			// _quad.color = data.active ? 0x00ff00 : 0x004400;
 			
 			this.x = data.bounds.x;
 			this.y = data.bounds.y;
