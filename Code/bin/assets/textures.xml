@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with TexturePacker http://texturepacker.com-->
+<!-- $TexturePacker:SmartUpdate:692a6644b11e244b4199cef13537a922$ -->
+<TextureAtlas imagePath="textures.png">
+    <SubTexture name="banana" x="50" y="2" width="40" height="35"/>
+    <SubTexture name="building" x="308" y="48" width="120" height="450"/>
+    <SubTexture name="cloud" x="2" y="48" width="207" height="81"/>
+    <SubTexture name="explosion" x="211" y="48" width="95" height="95"/>
+    <SubTexture name="explosion_effect" x="16" y="2" width="32" height="32"/>
+    <SubTexture name="heart" x="2" y="2" width="12" height="12"/>
+    <SubTexture name="powerbar_border" x="92" y="2" width="141" height="44"/>
+    <SubTexture name="powerbar_fill" x="235" y="2" width="141" height="44"/>
+</TextureAtlas>
