@@ -73,10 +73,10 @@ package com.giantmo.bananas.controller
 		
 		public function advanceTime (time:Number) : void
 		{			
-			if(time > 0.04)
+			/*if(time > 0.04)
 			{
 				time = 0.04;
-			}
+			}*/
 			
 			// move objects
 			_movementController.tick( time, _model.bananaThrow.bananaFlying );
@@ -204,6 +204,9 @@ package com.giantmo.bananas.controller
 			banana.rotation 	= 0;
 			banana.bounds.width = Banana.WIDTH;
 			banana.bounds.height = Banana.HEIGHT;
+			banana.oldPosition.x	= position.x;
+			banana.oldPosition.y 	= position.y;
+			banana.wasInExplosion	= false;
 			
 			// set data on view
 			_bananas.bananaView.data = banana;

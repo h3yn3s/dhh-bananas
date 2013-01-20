@@ -15,12 +15,16 @@ package com.giantmo.bananas.model
 		// PROPERTIES		
 		public var rotation : Number;		
 		public var bounds 	: Rectangle;
+		public var oldPosition : Point;
+		
+		public var wasInExplosion : Boolean;
 		
 		public var owner : int; // ID of the owning Gorilla
 		
 		public function Banana() 
 		{
 			bounds = new Rectangle(0, 0, 20, 20);
+			oldPosition = new Point();
 			
 			rotation = 0;			
 		}

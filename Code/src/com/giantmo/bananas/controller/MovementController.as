@@ -35,6 +35,9 @@ package com.giantmo.bananas.controller
 				_bananaThrow.velocity.y += (Constants.GRAVITY * timePassed);
 				_bananaThrow.velocity.x += (Constants.WIND_RESISTANCE * _wind.force)
 				
+				_banana.oldPosition.x = _banana.bounds.x;
+				_banana.oldPosition.y = _banana.bounds.y;
+				
 				_banana.bounds.x += _bananaThrow.velocity.x * timePassed * Constants.BANANA_SPEED_MODIFIER;
 				_banana.bounds.y += _bananaThrow.velocity.y * timePassed * Constants.BANANA_SPEED_MODIFIER;
 				_banana.rotation += deg2rad(50 * timePassed);

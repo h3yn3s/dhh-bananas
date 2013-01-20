@@ -5,7 +5,7 @@ package com.giantmo.bananas.model
 	public class Explosion
 	{
 		// CONSTANTS
-		public static const RADIUS : Number = 20;
+		public static const RADIUS : Number = 40;
 		
 		// PROPERTIES
 		public var position : Point;

@@ -24,13 +24,13 @@ package com.giantmo.bananas.view
 			/*var bg : Quad = new Quad( Banana.WIDTH, Banana.HEIGHT, 0xF0AB00 );
 			this.addChild( bg );*/
 			
-			mBorder = new Sprite();
+			/*mBorder = new Sprite();
 			addChild(mBorder);
 			
 			for (var i:int=0; i<4; ++i)
 				mBorder.addChild(new Quad(1.0, 1.0));
 			
-			updateBorder();
+			updateBorder();*/
 			
 			_image = new Image( Assets.banana );
 			_image.width = Banana.WIDTH;
