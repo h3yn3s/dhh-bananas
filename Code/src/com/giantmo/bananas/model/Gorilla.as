@@ -13,8 +13,8 @@ package com.giantmo.bananas.model
 		public static const WIDTH  : Number = 49;
 		public static const HEIGHT : Number = 80;
 		
-		public static const ARM_X = 5;
-		public static const ARM_Y = 30;				
+		public static const ARM_X : Number = 5;
+		public static const ARM_Y : Number = 30;				
 		
 		// PROPERTIES
 		public var id : int;

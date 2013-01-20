@@ -8,7 +8,7 @@ package com.giantmo.bananas.model
 	public class PowerBar 
 	{
 		/** The point on the gorilla where the banana would be thrown off. */
-		public static const POWER_BAR_ORIGIN : Point = new Point(21, 20);
+		public static const POWER_BAR_ORIGIN : Point = new Point(25, 25);
 		
 		// PROPERTIES
 		public var gorillaIsAiming : Boolean;

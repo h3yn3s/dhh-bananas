@@ -235,7 +235,7 @@ package com.giantmo.bananas.controller
 			
 			// initialize banana
 			gorilla.id = id;
-			gorilla.bounds.x 	= position.x - Gorilla.WIDTH / 2;
+			gorilla.bounds.x 	= position.x;
 			gorilla.bounds.y 	= position.y - Gorilla.HEIGHT;
 			gorilla.bounds.width = Gorilla.WIDTH;
 			gorilla.bounds.height = Gorilla.HEIGHT;
@@ -247,9 +247,12 @@ package com.giantmo.bananas.controller
 			if (id == 1)
 			{
 				view.scaleX = -1;
-				gorilla.bounds.x += Gorilla.WIDTH;
 			}
+			
 			view.data = gorilla;
+			// add powerBar model also (the gorilla needs to know about the angle of the power bar)
+			view.powerBarData = _model.powerBar;
+			
 			view.update();
 			_bananas.addGorilla( view );
 		}
@@ -266,7 +269,7 @@ package com.giantmo.bananas.controller
 			var view : BuildingView = _bananas.buildingViews[id];
 			view.data = building;
 			view.update();
-			_bananas.addBuilding( view );
+			_bananas.addBuilding( view );			
 		}
 		
 		public function spawnCloud(id : int, position : Point) : void

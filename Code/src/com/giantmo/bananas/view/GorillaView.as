@@ -2,6 +2,8 @@ package com.giantmo.bananas.view
 {
 	import com.giantmo.bananas.model.Assets;
 	import com.giantmo.bananas.model.Gorilla;
+	import com.giantmo.bananas.model.PowerBar;
+	import starling.utils.deg2rad;
 	
 	import starling.display.Image;
 	import starling.display.Quad;
@@ -14,7 +16,10 @@ package com.giantmo.bananas.view
 	public class GorillaView extends Sprite
 	{
 		// Gorilla data object
-		public var data : Gorilla;		
+		public var data : Gorilla;
+		
+		// PowerBar data object
+		public var powerBarData : PowerBar;
 		
 		// display object
 		// private var _quad : Quad;
@@ -34,20 +39,22 @@ package com.giantmo.bananas.view
 			// create gorilla
 			_gorilla = new Image( Assets.gorilla );			
 			_gorilla.height = Gorilla.HEIGHT;
-			_gorilla.width = Gorilla.WIDTH;
+			_gorilla.width = Gorilla.WIDTH;			
 			this.addChild( _gorilla );
 			
 			// create arms (with & without banana)
 			_gorillaArm = new Image( Assets.gorillaArm);
-			_gorillaArm.x = Gorilla.ARM_X;
+			_gorillaArm.x = Gorilla.ARM_X;			
 			_gorillaArm.y = Gorilla.ARM_Y;
 			_gorillaArm.visible = false;
 			this.addChild( _gorillaArm );
 			
 			_gorillaArmBanana = new Image (Assets.gorillaArmBanana);
-			_gorillaArmBanana.x = Gorilla.ARM_X;
+			_gorillaArmBanana.x = Gorilla.ARM_X + (_gorillaArmBanana.width / 2);;
 			_gorillaArmBanana.y = Gorilla.ARM_Y;
 			_gorillaArmBanana.visible = false;
+			_gorillaArmBanana.pivotX = Gorilla.ARM_X + (_gorillaArmBanana.width / 2);
+			
 			this.addChild( _gorillaArmBanana );			
 			
 			// create lives displays
@@ -62,6 +69,9 @@ package com.giantmo.bananas.view
 				
 				this.addChild(life);
 			}
+			
+			// set the pivot to the middle
+			this.pivotX = this.width / 2;
 		}
 		
 		public function update() : void
@@ -73,13 +83,35 @@ package com.giantmo.bananas.view
 			}
 			
 			// draw arm, if player is inactive
-			if (!data.active) 
+			if (data.active) 
 			{
-				_gorillaArm.visible = true;
-				_gorillaArmBanana.visible = false;
-			} else {
+				// switch display of arms
 				_gorillaArmBanana.visible = true;
 				_gorillaArm.visible = false;
+				
+				// change arm with banana angle based on powerBar
+				// step 1: apply the angle of the powerBar
+				if ( data.id == 0 ) {					
+					_gorillaArmBanana.rotation = powerBarData.aimingAngle; // angle applies to rotation
+					// step 2: add 180° to the powerBar angle
+					_gorillaArmBanana.rotation += deg2rad(180);
+				} else {
+					_gorillaArmBanana.rotation = (-1 * powerBarData.aimingAngle); // angle applies to rotation
+				}				
+				
+				// step 3: convert the "power" of the bar into angle as well
+				_gorillaArmBanana.rotation -= ( powerBarData.aimingForce * 2 );
+				
+				// switch the angle for the gorilla on the right side
+				/*if (data.id == 1)
+				{
+					_gorillaArmBanana.rotation *= -1;
+				}*/
+				
+			} else {
+				// switch display of arms
+				_gorillaArm.visible = true;
+				_gorillaArmBanana.visible = false;
 			}
 						
 			this.x = data.bounds.x;

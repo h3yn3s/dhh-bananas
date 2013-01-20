@@ -51,7 +51,7 @@ package com.giantmo.bananas.view
 				// only add if not added yet
 				this.visible = true;
 				
-				this.x = data.owningGorillaPosition.x + PowerBar.POWER_BAR_ORIGIN.x;
+				this.x = data.owningGorillaPosition.x;
 				this.y = data.owningGorillaPosition.y + PowerBar.POWER_BAR_ORIGIN.y;
 				
 				// update power bar rotation and force
