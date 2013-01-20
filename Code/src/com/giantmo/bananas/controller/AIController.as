@@ -53,7 +53,7 @@ package com.giantmo.bananas.controller
 			var force : Number = Math.random();
 			
 			// for now, calculate random angle that is ok in average
-			var angle : Number = deg2rad( -180 );
+			var angle : Number = deg2rad( -90 );
 			
 			trace( "WILL DRAG AT ANGLE", angle, "WITH FORCE", force );
 			

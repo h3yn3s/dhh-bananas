@@ -20,6 +20,8 @@ package com.giantmo.bananas.controller
 	import starling.animation.IAnimatable;
 	import starling.core.Starling;
 	import starling.events.Event;
+	import starling.utils.deg2rad;
+	import starling.utils.rad2deg;
 
 	/**
 	 * ...
@@ -553,8 +555,8 @@ package com.giantmo.bananas.controller
 		{
 			var startPoint : Point = _bananas.gorrilaViews[_model.currentPlayer].localToGlobal( PowerBar.POWER_BAR_ORIGIN );
 			
-			var velocityX : Number = startPoint.x + (Constants.MAX_DRAG_FORCE_AXIS * data.force) * Math.cos(data.angle);
-			var velocityY : Number = startPoint.y + (Constants.MAX_DRAG_FORCE_AXIS * data.force) * Math.sin(data.angle);
+			var velocityX : Number = (Constants.MAX_DRAG_FORCE_AXIS * data.force) * Math.cos( rad2deg(data.angle) );
+			var velocityY : Number = (Constants.MAX_DRAG_FORCE_AXIS * data.force) * Math.sin( rad2deg(data.angle) );
 			
 			trace("START POINT", startPoint, data.angle, data.force, (Constants.MAX_DRAG_FORCE_AXIS * data.force), velocityX, velocityY);
 			
@@ -566,7 +568,7 @@ package com.giantmo.bananas.controller
 			this.spawnBanana( 
 				_model.currentPlayer, 
 				_bananas.gorrilaViews[_model.currentPlayer].localToGlobal( PowerBar.POWER_BAR_ORIGIN ), 
-				_model.bananaThrow.velocity
+				new Point( velocityX, velocityY )
 			);
 		}
 	}
