@@ -31,6 +31,24 @@ package com.giantmo.bananas.model
 		
 		// TEXTURE ACCESS
 		
+		/** Get the gorilla arm texture. */
+		public static function get gorillaArm() : Texture
+		{
+			return getTexture( "Gorilla_arm_ingame_small" ); 
+		}
+		
+		/** Get the gorilla arm with banana texture. */
+		public static function get gorillaArmBanana() : Texture
+		{
+			return getTexture( "Gorilla_arm_mit_banane_ingame_small" ); 
+		}
+		
+		/** Get the gorilla texture. */
+		public static function get gorilla() : Texture
+		{
+			return getTexture( "Gorilla_ingame_small" ); 
+		}
+		
 		/** Get the power bar fill texture. */
 		public static function get powerBarFill() : Texture
 		{
