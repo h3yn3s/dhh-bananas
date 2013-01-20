@@ -1,7 +1,6 @@
 ﻿REQUIRED
 - Richtungsanzeige erst anzeigen nach DRAG [Hannes]
 // - Framerate anpassen (wenn es "ruckelt", dann Zeit begrenzen auf 25 Tausendstel)
-- sounds für iOS anpassen (native extension) so dass der Sound wirklich "AUS" ist [Daniel]
 - Sound ausstellen können [Hannes]
 - game over anzeige + neustart [Herm]
 - Icon & Splash Screens [Herm]
