@@ -67,8 +67,15 @@ package com.giantmo.bananas.controller
 			
 			_soundController = new SoundController( );
 			
+			// register start screen event
+			bananas.addEventListener( BananasEvent.START_GAME_SELECTED, bananas_startGameHandler );
+						
 			// create a first game
 			createGame();
+			
+			// show start screen
+			bananas.showStartScreen();			
+			model.gameActive = false;
 		}
 		
 		public function advanceTime (time:Number) : void
@@ -479,6 +486,26 @@ package com.giantmo.bananas.controller
 			} else if (cloud.position.x < (0 - Cloud.WIDTH)) {
 				cloud.position.x = Constants.WORLD_BOUNDARY.width;
 			}
+		}
+		
+		protected function bananas_startGameHandler(event : Event, mode : String) : void
+		{
+			// hide the start screen
+			_bananas.hideStartScreen();
+			
+			if(mode == Constants.GAME_MODE_PVP)
+			{
+				// TODO create a new game PVP
+				trace("START NEW PVP GAME");
+			}
+			else if(mode == Constants.GAME_MODE_PVC)
+			{
+				// TODO create a new game PVC
+				trace("START NEW PVC GAME");
+			}
+			
+			// make game active
+			_model.gameActive = true;
 		}
 	}
 }

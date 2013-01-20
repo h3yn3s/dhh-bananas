@@ -18,6 +18,8 @@ package com.giantmo.bananas.model
 		
 		public var currentPlayer : int; // ID of the current player
 		
+		public var gameActive : Boolean;
+		
 		public function Model() 
 		{
 			// 1 banana

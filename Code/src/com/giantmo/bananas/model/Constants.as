@@ -21,6 +21,9 @@ package com.giantmo.bananas.model
 		public static const MAX_DRAG_FORCE_AXIS : Number = 200; // drag max 100px on x and y axis
 		public static const MAX_DRAG_FORCE 		: Number = Math.sqrt( (MAX_DRAG_FORCE_AXIS * MAX_DRAG_FORCE_AXIS) + (MAX_DRAG_FORCE_AXIS * MAX_DRAG_FORCE_AXIS) ); // max angled force sqrt(x² + y²)
 		
+		public static const GAME_MODE_PVP : String = "pvp";
+		public static const GAME_MODE_PVC : String = "pvc";
+		
 		public function Constants() 
 		{
 			

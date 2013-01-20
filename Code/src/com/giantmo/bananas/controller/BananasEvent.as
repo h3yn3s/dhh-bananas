@@ -22,5 +22,8 @@ package com.giantmo.bananas.controller
 		
 		/** Notify if touch was dragged... */
 		public static const DRAGGED : String = "dragged";
+		
+		/** Notify that the user selected to start a game... */
+		public static const START_GAME_SELECTED : String = "startGameSelected";
 	}
 }

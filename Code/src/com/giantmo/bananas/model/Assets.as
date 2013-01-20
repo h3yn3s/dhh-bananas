@@ -6,10 +6,11 @@ package com.giantmo.bananas.model
 	import com.greensock.loading.MP3Loader;
 	import com.greensock.loading.XMLLoader;
 	import com.greensock.loading.display.ContentDisplay;
-	import flash.media.Sound;
 	
 	import flash.display.BitmapData;
 	import flash.filesystem.File;
+	import flash.geom.Rectangle;
+	import flash.media.Sound;
 	import flash.utils.Dictionary;
 	
 	import starling.textures.Texture;
@@ -97,12 +98,33 @@ package com.giantmo.bananas.model
 			return getTexture( "heart" ); 
 		}
 		
+		/** Get the screen overlay texture. */
+		public static function get greyPixel() : Texture
+		{
+			return getTexture( "grey_pixel", new Rectangle(1,1,2,2) ); 
+		}
+		
+		/** PVP Button texture. */
+		public static function get pvpButton() : Texture
+		{
+			return getTexture( "pvp_button" ); 
+		}
+		
+		/** PVC Button texture. */
+		public static function get pvcButton() : Texture
+		{
+			return getTexture( "pvc_button" ); 
+		}
+		
 		/** Get a texture form the buffer or create it. */
-		private static function getTexture(key : String) : Texture
+		private static function getTexture(key : String, region : Rectangle = null) : Texture
 		{
 			if(_textureBuffer[key] == null)
 			{
-				_textureBuffer[key] = _textures.getTexture( key );
+				if(region == null)
+					_textureBuffer[key] = _textures.getTexture( key );
+				else
+					_textureBuffer[key] = Texture.fromTexture( _textures.getTexture( key ), region );
 			}
 			
 			return _textureBuffer[key];

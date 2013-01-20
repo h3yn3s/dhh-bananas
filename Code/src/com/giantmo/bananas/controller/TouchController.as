@@ -19,6 +19,8 @@ package com.giantmo.bananas.controller
 		private var _game : Bananas;
 		private var _model : Model;
 		
+		private var _dragging : Boolean;
+		
 		public function TouchController(game : Bananas, model : Model) 
 		{
 			_game = game;
@@ -30,14 +32,23 @@ package com.giantmo.bananas.controller
 		
 		protected function game_touchHandler( event : TouchEvent ) : void
 		{
+			if(!_model.gameActive)
+				return;
+			
 			var touch : Touch = event.touches[0];
 			
 			switch (touch.phase) 
 			{
 				case TouchPhase.ENDED : 
-					this.dispatchEventWith( BananasEvent.DRAG_RELEASED, false, new Point(touch.globalX, touch.globalY) );
+					if(_dragging)
+					{
+						this.dispatchEventWith( BananasEvent.DRAG_RELEASED, false, new Point(touch.globalX, touch.globalY) );
+						_dragging = false;
+					}
 					break;
 				case TouchPhase.BEGAN : 
+					_dragging = true;
+					
 					// only begin the drag if started "near" a gorilla
 					var touchPoint : Point = new Point (touch.globalX, touch.globalY);
 					

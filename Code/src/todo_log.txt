@@ -4,7 +4,6 @@
 - Sound ausstellen können [Hannes]
 - game over anzeige + neustart [Herm]
 - Icon & Splash Screens [Herm]
-- start screen mit auswahl ob alleine oder gegen ki [Daniel]
 - Gorilla (zeichnen) mit Arm [Herm]
  - DONE zeichnen 
  - Gorilla Grafik
@@ -12,6 +11,7 @@
  - Bewegung
  
 - KI einbauen [ALL]
+ - basierend auf selektion im start bildschirm
 
 NICE
 - Sounds ggf. in eine mp3 komprimieren?

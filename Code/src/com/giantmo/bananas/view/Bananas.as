@@ -39,6 +39,8 @@ package com.giantmo.bananas.view
 		
 		private var _explosionEffect : ParticleSystem;
 		
+		private var _startScreen : StartScreen;
+		
 		public function Bananas() 
 		{
 			// set ambient sound for iOS silent switch issue
@@ -102,13 +104,16 @@ package com.giantmo.bananas.view
 			_explosionEffect = new PDParticleSystem( Assets.explosionEffectXML, Assets.explosionEffect );
 			_explosionEffect.addEventListener( Event.COMPLETE, explosionEffect_completeHandler );
 			
+			// create start screen
+			_startScreen = new StartScreen();
+			
 			// add layers as children
 			this.addChild( _cloudLayer );		// clouds
 			this.addChild( _buildingLayer );	// buildings
 			//this.addChild( _explosionLayer );	// explosions
 			this.addChild( _gorillaLayer );		// gorillas
 			this.addChild( _powerBarLayer );	// power bar
-			this.addChild( _bananaLayer );		// banana			
+			this.addChild( _bananaLayer );		// banana
 		}
 		
 		public function clean() : void
@@ -189,6 +194,16 @@ package com.giantmo.bananas.view
 			
 			Starling.juggler.add( _explosionEffect ); // we need to add it to juggler to be animated
 			_explosionEffect.start( 0.3 ); // explode for 0.3 seconds
+		}
+		
+		public function showStartScreen() : void
+		{
+			this.addChild( _startScreen );
+		}
+		
+		public function hideStartScreen() : void
+		{
+			this.removeChild( _startScreen );
 		}
 		
 		private function explosionEffect_completeHandler(event : Event):void
