@@ -111,41 +111,47 @@ package com.giantmo.bananas.controller
 					
 					// find the first collision of the movement line with the building
 					var collisionPoints : Array = rayBoxIntersect( _banana.oldPosition, _banana.bounds.topLeft, _buildings[idx].bounds.topLeft, _buildings[idx].bounds.bottomRight );
+					var collisionPoint  : Point = null;
 					
 					if(collisionPoints != null && collisionPoints.length > 0)
 					{
-						var collisionPoint : Point = collisionPoints[0];
+						collisionPoint = collisionPoints[0];
 						if(collisionPoint == null)
 							collisionPoint = collisionPoints[1];
 						
-						// go through the explosions and check
-						for (var idx2 : int = 0; idx2 < _explosions.length; idx2++)
-						{
-							var exp : Explosion = _explosions[idx2];
-							
-							// check if is in explosion radius
-							if( intersectRectCircle( _banana.bounds, exp.position, Explosion.RADIUS ) )
-							{
-								_banana.wasInExplosion = true;
-								isColliding = false;
-								break;
-							}
-						}
+					}
+					
+					// go through the explosions and check
+					for (var idx2 : int = 0; idx2 < _explosions.length; idx2++)
+					{
+						var exp : Explosion = _explosions[idx2];
 						
-						if(isColliding)
+						// check if is in explosion radius
+						if( intersectRectCircle( _banana.bounds, exp.position, Explosion.RADIUS ) )
 						{
-							
-							// gorilla has been hit -> dispatch event
-							dispatchEventWith( 
-								BananasEvent.BANANA_COLLISION_BUILDING, 
-								false, {
-									building : _buildings[idx], 
-									collisionPoint : _banana.wasInExplosion ? new Point( _banana.bounds.x + _banana.bounds.width / 2, _banana.bounds.y + _banana.bounds.height / 2) : collisionPoint
-								} 
-							);
-							
-							return true;
+							_banana.wasInExplosion = true;
+							isColliding = false;
+							break;
 						}
+					}
+					
+					if(isColliding)
+					{
+						collisionPoint = _banana.wasInExplosion ? new Point( _banana.bounds.x + _banana.bounds.width / 2, _banana.bounds.y + _banana.bounds.height / 2) : collisionPoint;
+						
+						if(collisionPoint == null)
+							return false;
+						
+						// gorilla has been hit -> dispatch event
+						dispatchEventWith( 
+							BananasEvent.BANANA_COLLISION_BUILDING, 
+							false, {
+								building : _buildings[idx], 
+								collisionPoint : collisionPoint
+							} 
+						);
+						
+						return true;
 					}
 				}
 			}

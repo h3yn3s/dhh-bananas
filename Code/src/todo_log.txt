@@ -1,11 +1,9 @@
 ﻿REQUIRED
 - Richtungsanzeige erst anzeigen nach DRAG [Hannes]
-- Bessere Kollisionen Banana <-> Building (evtl Physik?) [Daniel]
 // - Framerate anpassen (wenn es "ruckelt", dann Zeit begrenzen auf 25 Tausendstel)
 - sounds für iOS anpassen (native extension) so dass der Sound wirklich "AUS" ist [Daniel]
 - Sound ausstellen können [Hannes]
 - game over anzeige + neustart [Herm]
-- Explosions-Radius wieder erhöhen, man muss sich durch gebäude bomben können [Daniel]
 - Icon & Splash Screens [Herm]
 - start screen mit auswahl ob alleine oder gegen ki [Daniel]
 - Gorilla (zeichnen) mit Arm [Herm]
