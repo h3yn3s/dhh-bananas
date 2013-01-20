@@ -1,8 +1,11 @@
 package com.giantmo.bananas.view 
 {	
 	import com.giantmo.bananas.model.Assets;
-	import com.giantmo.bananas.model.Constants;	
+	import com.giantmo.bananas.model.Constants;
 	import com.giantmo.bananas.util.ObjectPool;
+	
+	import flash.media.AudioPlaybackMode;
+	import flash.media.SoundMixer;
 	
 	import starling.core.Starling;
 	import starling.display.Image;
@@ -38,7 +41,9 @@ package com.giantmo.bananas.view
 		
 		public function Bananas() 
 		{
-			
+			// set ambient sound for iOS silent switch issue
+			var string : String = AudioPlaybackMode.AMBIENT;
+			SoundMixer.audioPlaybackMode = string;
 		}
 		
 		public function initialize() : void
