@@ -9,6 +9,11 @@
 - Icon & Splash Screens [Herm]
 - start screen mit auswahl ob alleine oder gegen ki [Daniel]
 - Gorilla (zeichnen) mit Arm [Herm]
+ - DONE zeichnen 
+ - Gorilla Grafik
+ - Arm Grafik
+ - Bewegung
+ 
 - KI einbauen [ALL]
 
 NICE
