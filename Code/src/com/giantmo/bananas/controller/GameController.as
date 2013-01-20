@@ -235,6 +235,13 @@ package com.giantmo.bananas.controller
 			
 			// set data on view
 			var view : GorillaView = _bananas.gorrilaViews[id];
+			
+			// the second gorilla is mirrored and is the to be positioned more "right"
+			if (id == 1)
+			{
+				view.scaleX = -1;
+				gorilla.bounds.x += Gorilla.WIDTH;
+			}
 			view.data = gorilla;
 			view.update();
 			_bananas.addGorilla( view );
