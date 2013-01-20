@@ -23,8 +23,11 @@ package com.giantmo.bananas.view
 		// lives display
 		private var _livesDisplays : Vector.<Image>;
 		
-		// power bar
-		private var _powerBar : Image;
+		// arm without banana
+		private var _gorillaArm : Image;
+		
+		// arm with banana
+		private var _gorillaArmBanana : Image;
 		
 		public function GorillaView() 
 		{
@@ -32,9 +35,20 @@ package com.giantmo.bananas.view
 			_gorilla = new Image( Assets.gorilla );			
 			_gorilla.height = Gorilla.HEIGHT;
 			_gorilla.width = Gorilla.WIDTH;
-			
-			// _quad = new Quad(Gorilla.WIDTH, Gorilla.HEIGHT, 0x00ff00);
 			this.addChild( _gorilla );
+			
+			// create arms (with & without banana)
+			_gorillaArm = new Image( Assets.gorillaArm);
+			_gorillaArm.x = Gorilla.ARM_X;
+			_gorillaArm.y = Gorilla.ARM_Y;
+			_gorillaArm.visible = false;
+			this.addChild( _gorillaArm );
+			
+			_gorillaArmBanana = new Image (Assets.gorillaArmBanana);
+			_gorillaArmBanana.x = Gorilla.ARM_X;
+			_gorillaArmBanana.y = Gorilla.ARM_Y;
+			_gorillaArmBanana.visible = false;
+			this.addChild( _gorillaArmBanana );			
 			
 			// create lives displays
 			_livesDisplays = new Vector.<Image>(3);
@@ -58,9 +72,16 @@ package com.giantmo.bananas.view
 				_livesDisplays[idx].visible = idx + 1 <= data.lives; 
 			}
 			
-			// set active color
-			// _quad.color = data.active ? 0x00ff00 : 0x004400;
-			
+			// draw arm, if player is inactive
+			if (!data.active) 
+			{
+				_gorillaArm.visible = true;
+				_gorillaArmBanana.visible = false;
+			} else {
+				_gorillaArmBanana.visible = true;
+				_gorillaArm.visible = false;
+			}
+						
 			this.x = data.bounds.x;
 			this.y = data.bounds.y;
 		}

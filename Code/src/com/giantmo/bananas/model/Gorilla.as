@@ -10,13 +10,16 @@ package com.giantmo.bananas.model
 	public class Gorilla 
 	{
 		// CONSTANTS
-		public static const WIDTH  : Number = 42;
-		public static const HEIGHT : Number = 70;
-				
+		public static const WIDTH  : Number = 49;
+		public static const HEIGHT : Number = 80;
+		
+		public static const ARM_X = 5;
+		public static const ARM_Y = 30;				
 		
 		// PROPERTIES
 		public var id : int;
 		public var lives : int;
+		public var armPoint : Point;
 		
 		/** Flag if the gorilla is currently the one allowed to play. */
 		public var active : Boolean;
