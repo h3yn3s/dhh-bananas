@@ -12,6 +12,8 @@
  
 - KI einbauen [ALL]
  - basierend auf selektion im start bildschirm
+ - 1) Winkel und stärke berechnen (Flugbahn mit Wind) - Fehlerfaktor...
+ - 2) "Aiming" simulieren und banane los lassen
 
 NICE
 - Sounds ggf. in eine mp3 komprimieren?

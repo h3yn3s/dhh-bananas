@@ -36,6 +36,7 @@ package com.giantmo.bananas.controller
 		private var _collisionController : CollisionController;
 		private var _touchController : TouchController;
 		private var _soundController : SoundController;
+		private var _aiController : AIController;
 		
 		/** contains all relevant game object 
 		 *  1) Gorillas
@@ -226,6 +227,11 @@ package com.giantmo.bananas.controller
 			_model.bananaThrow.bananaFlying = true;
 			
 			_bananas.bananaView.update();
+			
+			// play the sound for throw released
+			_soundController.playSound(SoundController.GORILLA_THROW_RELEASED);			
+			// play the sound for a flying banana
+			_soundController.playSound(SoundController.BANANA_FLYING);
 		}
 		
 		public function spawnGorilla(id : int, position : Point) : void
@@ -322,6 +328,13 @@ package com.giantmo.bananas.controller
 			
 			// activate new gorilla
 			_model.gorillas[_model.currentPlayer].active = true;
+			
+			// if the second gorilla is active and we have an ai controller
+			if( _model.currentPlayer == 1 && _aiController != null )
+			{
+				// the ai shall play
+				_aiController.playMove();
+			}
 		}
 		
 		protected function touch_dragReleasedHandler(event : Event, position : Point) : void
@@ -340,6 +353,8 @@ package com.giantmo.bananas.controller
 				
 				_model.bananaThrow.velocity.y = velocity_y > 0 ? Math.min( velocity_y, Constants.MAX_DRAG_FORCE_AXIS )
 															   : Math.max( velocity_y, -Constants.MAX_DRAG_FORCE_AXIS );
+				
+				trace( _model.bananaThrow.aimingAngle, _model.bananaThrow.aimingForce, _model.bananaThrow.velocity );
 								
 				_model.powerBar.gorillaIsAiming = false; // not aiming any more
 				
@@ -353,13 +368,8 @@ package com.giantmo.bananas.controller
 				// stop the current sound (so that throw starte & released do not overlap)
 				_soundController.stopSound(SoundController.GORILLA_THROW_STARTED);
 				
-				// play the sound for throw released
-				_soundController.playSound(SoundController.GORILLA_THROW_RELEASED);
 				// draggedOnce is true again...
 				_model.bananaThrow.inDragPhase = !_model.bananaThrow.inDragPhase; 
-				
-				// play the sound for a flying banana
-				_soundController.playSound(SoundController.BANANA_FLYING);
 				
 				_model.bananaThrow.startPoint = null;
 			}
@@ -369,6 +379,12 @@ package com.giantmo.bananas.controller
 		{
 			if (!_model.bananaThrow.bananaFlying)
 			{
+				if( _model.getActiveGorilla().id == 1 && _aiController != null)
+				{
+					// the user is not supposed to play for the AI -> return immediately
+					return;
+				}
+				
 				trace("Drag started at ", position );	
 				_model.bananaThrow.startPoint = position;
 								
@@ -496,8 +512,17 @@ package com.giantmo.bananas.controller
 			// hide the start screen
 			_bananas.hideStartScreen();
 			
+			createGame();
+			
 			if(mode == Constants.GAME_MODE_PVP)
 			{
+				if(_aiController!= null)
+				{
+					_aiController.removeEventListeners();
+				}
+				
+				_aiController = null;
+				
 				// TODO create a new game PVP
 				trace("START NEW PVP GAME");
 			}
@@ -505,10 +530,44 @@ package com.giantmo.bananas.controller
 			{
 				// TODO create a new game PVC
 				trace("START NEW PVC GAME");
+				
+				if(_aiController!= null)
+				{
+					_aiController.removeEventListeners();
+				}
+				
+				// create a new ai controller if not done yet
+				_aiController = new AIController();
+				_aiController.addEventListener( BananasEvent.DRAG_RELEASED, ai_dragReleasedHandler );
+//				_aiController.addEventListener( BananasEvent.DRAG_RELEASED, touch_dragReleasedHandler);
+//				_aiController.addEventListener( BananasEvent.DRAG_STARTED, touch_dragStartedHandler);
+//				_aiController.addEventListener( BananasEvent.DRAGGED, touch_draggedHandler);
 			}
+			
 			
 			// make game active
 			_model.gameActive = true;
+		}
+		
+		protected function ai_dragReleasedHandler(event : Event, data : Object) : void
+		{
+			var startPoint : Point = _bananas.gorrilaViews[_model.currentPlayer].localToGlobal( PowerBar.POWER_BAR_ORIGIN );
+			
+			var velocityX : Number = startPoint.x + (Constants.MAX_DRAG_FORCE_AXIS * data.force) * Math.cos(data.angle);
+			var velocityY : Number = startPoint.y + (Constants.MAX_DRAG_FORCE_AXIS * data.force) * Math.sin(data.angle);
+			
+			trace("START POINT", startPoint, data.angle, data.force, (Constants.MAX_DRAG_FORCE_AXIS * data.force), velocityX, velocityY);
+			
+			//SPAWN A BANANA AT (x=910, y=571)
+			
+			//-2.324459116663887 0.630317380372777 (x=-122, y=-130)
+			
+			// spawn a banana with the settings
+			this.spawnBanana( 
+				_model.currentPlayer, 
+				_bananas.gorrilaViews[_model.currentPlayer].localToGlobal( PowerBar.POWER_BAR_ORIGIN ), 
+				_model.bananaThrow.velocity
+			);
 		}
 	}
 }
