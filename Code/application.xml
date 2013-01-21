@@ -2,7 +2,7 @@
 <application xmlns="http://ns.adobe.com/air/application/3.5">
 	
 	<id>com.giantmo.bananas</id>
-	<versionNumber>0.5</versionNumber>
+	<versionNumber>0.6</versionNumber>
 	<supportedProfiles>mobileDevice</supportedProfiles>
 	<filename>Bananas</filename>
 	
