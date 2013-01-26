@@ -1,19 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:fb6e80803f4953de04bdef2a95a332b1$ -->
+<!-- $TexturePacker:SmartUpdate:aca0bf088660c6caab18290c5d8a9555$ -->
 <TextureAtlas imagePath="textures.png">
-    <SubTexture name="Gorilla_arm_ingame_small" x="2" y="2" width="17" height="56"/>
-    <SubTexture name="Gorilla_arm_mit_banane_ingame_small" x="21" y="2" width="17" height="56"/>
-    <SubTexture name="Gorilla_ingame_small" x="40" y="2" width="49" height="80"/>
-    <SubTexture name="banana" x="91" y="2" width="40" height="35"/>
-    <SubTexture name="building" x="133" y="2" width="120" height="450"/>
-    <SubTexture name="cloud" x="255" y="2" width="207" height="81"/>
-    <SubTexture name="explosion" x="464" y="2" width="95" height="95"/>
-    <SubTexture name="explosion_effect" x="561" y="2" width="32" height="32"/>
-    <SubTexture name="grey_pixel" x="595" y="2" width="4" height="4"/>
-    <SubTexture name="heart" x="601" y="2" width="12" height="12"/>
-    <SubTexture name="powerbar_border" x="615" y="2" width="141" height="44"/>
-    <SubTexture name="powerbar_fill" x="758" y="2" width="141" height="44"/>
-    <SubTexture name="pvc_button" x="2" y="454" width="430" height="430"/>
-    <SubTexture name="pvp_button" x="434" y="454" width="430" height="430"/>
+    <SubTexture name="Gorilla_arm_ingame_small" x="384" y="2" width="17" height="56"/>
+    <SubTexture name="Gorilla_arm_mit_banane_ingame_small" x="403" y="2" width="17" height="56"/>
+    <SubTexture name="Gorilla_ingame_small" x="422" y="2" width="49" height="80"/>
+    <SubTexture name="again_button" x="2" y="99" width="430" height="150"/>
+    <SubTexture name="banana" x="56" y="2" width="40" height="35"/>
+    <SubTexture name="building" x="866" y="903" width="120" height="450"/>
+    <SubTexture name="cloud" x="473" y="2" width="207" height="81"/>
+    <SubTexture name="computer_wins" x="499" y="501" width="495" height="400"/>
+    <SubTexture name="explosion" x="682" y="2" width="95" height="95"/>
+    <SubTexture name="explosion_effect" x="22" y="2" width="32" height="32"/>
+    <SubTexture name="grey_pixel" x="2" y="2" width="4" height="4"/>
+    <SubTexture name="heart" x="8" y="2" width="12" height="12"/>
+    <SubTexture name="player_1_wins" x="2" y="501" width="495" height="400"/>
+    <SubTexture name="player_2_wins" x="434" y="99" width="495" height="400"/>
+    <SubTexture name="powerbar_border" x="98" y="2" width="141" height="44"/>
+    <SubTexture name="powerbar_fill" x="241" y="2" width="141" height="44"/>
+    <SubTexture name="pvc_button" x="2" y="903" width="430" height="430"/>
+    <SubTexture name="pvp_button" x="434" y="903" width="430" height="430"/>
 </TextureAtlas>
