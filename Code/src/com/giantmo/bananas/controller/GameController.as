@@ -69,13 +69,17 @@ package com.giantmo.bananas.controller
 			_touchController.addEventListener( BananasEvent.DRAG_STARTED, touch_dragStartedHandler);
 			_touchController.addEventListener( BananasEvent.DRAGGED, touch_draggedHandler);
 			
-			_soundController = new SoundController( );
+			_soundController = new SoundController( model );
+			_soundController.addEventListener( BananasEvent.GAME_OVER, sound_gameOverHandler );
 			
 			// register start screen event
 			bananas.addEventListener( BananasEvent.START_GAME_SELECTED, bananas_startGameHandler );
+			
+			// register the restart game event
+			bananas.addEventListener( BananasEvent.RESTART_GAME, bananas_restartGameHandler );
 						
 			// create a first game
-			createGame();
+			createGame(Constants.GAME_MODE_PVP);
 			
 			// show start screen
 			bananas.showStartScreen();			
@@ -132,10 +136,16 @@ package com.giantmo.bananas.controller
 			{
 				_bananas.explosionViews[idx].update();
 			}
+			
+			// pass it to the sound controller
+			_soundController.tick(time);
 		}
 		
-		public function createGame() : void
+		public function createGame(mode : String) : void
 		{
+			// set the type of game this is
+			_model.mode = mode;
+			
 			// remove all elements from the bananas view
 			_bananas.clean();
 			
@@ -242,12 +252,13 @@ package com.giantmo.bananas.controller
 			// get gorilla by id
 			var gorilla : Gorilla = _model.gorillas[id];
 			
-			// initialize banana
+			// initialize gorilla
 			gorilla.id = id;
 			gorilla.bounds.x 	= position.x;
 			gorilla.bounds.y 	= position.y - Gorilla.HEIGHT;
 			gorilla.bounds.width = Gorilla.WIDTH;
 			gorilla.bounds.height = Gorilla.HEIGHT;
+			gorilla.lives = Constants.MAX_GORILLA_LIVES;
 			
 			// set data on view
 			var view : GorillaView = _bananas.gorrilaViews[id];
@@ -338,6 +349,13 @@ package com.giantmo.bananas.controller
 				// the ai shall play
 				_aiController.playMove();
 			}
+		}
+		
+		protected function sound_gameOverHandler(event : Event) : void 
+		{
+			// show the game over screen
+			this._bananas._gameOverScreen.model = _model;
+			this._bananas.showGameOverScreen();			
 		}
 		
 		protected function touch_dragReleasedHandler(event : Event, position : Point) : void
@@ -472,9 +490,11 @@ package com.giantmo.bananas.controller
 			// check if gorilla is dead
 			if ( gorilla.lives == 0)
 			{
-				// TODO end game
+				// set the game to inactive, so that no bananas can be thrown anymore
+				_model.gameActive = false;
 				
 				// play the gorilla has lost sound
+				// once the sound has finished, the game over screen can be displayed
 				_soundController.playSound(SoundController.GORILLA_LOST);
 			} 
 			else
@@ -523,13 +543,18 @@ package com.giantmo.bananas.controller
 				cloud.position.x = Constants.WORLD_BOUNDARY.width;
 			}
 		}
+		protected function bananas_restartGameHandler(event : Event) : void 
+		{
+			_bananas.showStartScreen();
+			_bananas.hideGameOverScreen();
+		}
 		
 		protected function bananas_startGameHandler(event : Event, mode : String) : void
 		{
 			// hide the start screen
 			_bananas.hideStartScreen();
 			
-			createGame();
+			createGame(mode);
 			
 			if(mode == Constants.GAME_MODE_PVP)
 			{
@@ -540,14 +565,9 @@ package com.giantmo.bananas.controller
 				
 				_aiController = null;
 				
-				// TODO create a new game PVP
-				trace("START NEW PVP GAME");
 			}
 			else if(mode == Constants.GAME_MODE_PVC)
 			{
-				// TODO create a new game PVC
-				trace("START NEW PVC GAME");
-				
 				if(_aiController!= null)
 				{
 					_aiController.removeEventListeners();

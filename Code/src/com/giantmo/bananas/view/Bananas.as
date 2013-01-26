@@ -34,12 +34,14 @@ package com.giantmo.bananas.view
 		public var _buildingLayer 			: Image;
 		public var _buildingLayerTexture	: RenderTexture;
 		public var _powerBarLayer 	: Sprite;
+		public var _gameOverScreen : GameOverScreen;
 		
 		private var _explosionPool : ObjectPool;
 		
 		private var _explosionEffect : ParticleSystem;
 		
 		private var _startScreen : StartScreen;
+		
 		
 		public function Bananas() 
 		{
@@ -107,6 +109,9 @@ package com.giantmo.bananas.view
 			// create start screen
 			_startScreen = new StartScreen();
 			
+			// create gameOverScreen
+			_gameOverScreen = new GameOverScreen();
+						
 			// add layers as children
 			this.addChild( _cloudLayer );		// clouds
 			this.addChild( _buildingLayer );	// buildings
@@ -122,6 +127,7 @@ package com.giantmo.bananas.view
 			_buildingLayerTexture.clear();
 			_gorillaLayer.removeChildren();
 			_bananaLayer.removeChildren();
+			this.hideGameOverScreen();
 			//_explosionLayer.removeChildren();
 			
 			// reput all explosions into pool
@@ -204,6 +210,17 @@ package com.giantmo.bananas.view
 		public function hideStartScreen() : void
 		{
 			this.removeChild( _startScreen );
+		}
+		
+		public function showGameOverScreen( ) : void
+		{			
+			_gameOverScreen.setWinner();
+			this.addChild( _gameOverScreen );
+		}
+		
+		public function hideGameOverScreen() : void
+		{
+			this.removeChild( _gameOverScreen );
 		}
 		
 		private function explosionEffect_completeHandler(event : Event):void

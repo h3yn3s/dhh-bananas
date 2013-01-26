@@ -104,6 +104,24 @@ package com.giantmo.bananas.model
 			return getTexture( "grey_pixel", new Rectangle(1,1,2,2) ); 
 		}
 		
+		/** Player 1 wins texture */
+		public static function get player1Wins() : Texture
+		{
+			return getTexture( "player_1_wins" );
+		}
+		
+		/** Player 2 wins texture */
+		public static function get player2Wins() : Texture
+		{
+			return getTexture( "player_2_wins" );
+		}
+		
+		/** Computer wins texture */
+		public static function get computerWins() : Texture
+		{
+			return getTexture( "computer_wins" );
+		}
+		
 		/** PVP Button texture. */
 		public static function get pvpButton() : Texture
 		{
@@ -114,6 +132,12 @@ package com.giantmo.bananas.model
 		public static function get pvcButton() : Texture
 		{
 			return getTexture( "pvc_button" ); 
+		}
+		
+		/** Again? Button texture. */
+		public static function get againButton() : Texture
+		{
+			return getTexture( "again_button" ); 
 		}
 		
 		/** Get a texture form the buffer or create it. */

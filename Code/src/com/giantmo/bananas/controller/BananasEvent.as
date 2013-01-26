@@ -25,5 +25,11 @@ package com.giantmo.bananas.controller
 		
 		/** Notify that the user selected to start a game... */
 		public static const START_GAME_SELECTED : String = "startGameSelected";
+		
+		/** Notifiy when the game is over */
+		public static const GAME_OVER : String = "gameOver";
+		
+		/** Notify when the start screen should be displayed (again) */
+		public static const RESTART_GAME : String = "restartGame";
 	}
 }

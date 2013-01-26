@@ -4,11 +4,6 @@
 - Sound ausstellen können [Hannes]
 - game over anzeige + neustart [Herm]
 - Icon & Splash Screens [Herm]
-- Gorilla (zeichnen) mit Arm [Herm]
- - DONE zeichnen 
- - Gorilla Grafik
- - Arm Grafik
- - Bewegung
  
 - KI einbauen [ALL]
  - basierend auf selektion im start bildschirm
@@ -21,3 +16,7 @@ NICE
 - sound faden, hintergrundmusik einblenden und faden, falls es sound im vordergrund gibt
 - multiple cloud layers (hinten langsamer als vorne)
 - Multiple KI Schwierigkeiten
+- Grafiken überarbeiten
+ - Wolken
+ - Hochhäuser
+- Banane sollte sich drehen, wenn man wirft (Pivot Punkt?)

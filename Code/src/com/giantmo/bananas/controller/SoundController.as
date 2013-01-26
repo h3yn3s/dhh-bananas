@@ -1,13 +1,15 @@
 package com.giantmo.bananas.controller 
 {
 	import com.giantmo.bananas.model.Assets;
+	import com.giantmo.bananas.model.Model;
 	import flash.media.Sound;
 	import flash.media.SoundChannel;
+	import starling.events.EventDispatcher;
 	/**
 	 * ...
 	 * @author ...
 	 */
-	public class SoundController 
+	public class SoundController extends EventDispatcher
 	{	
 		public static const BANANA_THEME : String = new String ( "bananaTheme" );
 		public static const BANANA_FLYING : String = new String ( "bananaFlying" );
@@ -21,17 +23,38 @@ package com.giantmo.bananas.controller
 		
 		private var _soundChannel : SoundChannel;
 		
-		public function SoundController() 
+		// gorilla wins sound duration
+		private var _loseDuration : Number;
+		private var _losePlaying : Boolean;
+				
+		public function SoundController( model : Model) 
 		{
 			_soundChannel = new SoundChannel();
+			_losePlaying = false;
+			_loseDuration = 0;
 		}
+		
+		public function tick(timePassed : Number ):void 
+		{
+			// if someone won the game, the winning theme plays
+			if (_losePlaying) {				
+				_loseDuration += timePassed;
+				// if the winning theme is over, dispatch this event!
+				if (_loseDuration > (Assets.soundGorillaWins.length / 1000)) {					
+					// now reset the variables for the next game
+					_losePlaying = false;
+					_loseDuration = 0;
+					this.dispatchEventWith(BananasEvent.GAME_OVER);					
+				}
+			}
+		}	
 		
 		public function playSound ( key : String ) : void 
 		{
 			switch (key) 
 			{
 				case BANANA_THEME: 
-					_soundChannel = Assets.soundBananaTheme.play();
+					_soundChannel = Assets.soundBananaTheme.play();										
 					break;
 				case BANANA_FLYING: 
 					_soundChannel = Assets.soundBananaFlying.play();
@@ -47,6 +70,7 @@ package com.giantmo.bananas.controller
 					break;
 				case GORILLA_LOST: 
 					_soundChannel = Assets.soundGorillaLost.play();
+					_losePlaying = true;
 					break;
 				case GORILLA_WINS: 
 					_soundChannel = Assets.soundGorillaWins.play();
@@ -61,14 +85,14 @@ package com.giantmo.bananas.controller
 				default:
 			}
 		}
-		
+			
 		public function stopSound ( key : String ) : void 
 		{
 			_soundChannel.stop();
 /*			switch (key) 
 			{
 				case BANANA_THEME: 
-					_soundChannel.stop() = Assets.soundBananaTheme.close();
+					Assets.soundBananaTheme.close();
 					break;
 				case BANANA_FLYING: 
 					_soundChannel = Assets.soundBananaFlying.close();
