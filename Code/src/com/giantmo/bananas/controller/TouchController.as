@@ -62,7 +62,7 @@ package com.giantmo.bananas.controller
 					// if > 70, don't start the drag...
 					var distance : Number = new Number( Math.sqrt( Math.pow((touchPoint.x - gorillaMidPoint.x) , 2) + Math.pow((touchPoint.y - gorillaMidPoint.y) , 2)));
 					
-					if ( distance < Constants.GORILLA_TOUCH_RADIUS )
+					if (distance < Constants.GORILLA_TOUCH_RADIUS )
 					{
 						this.dispatchEventWith( BananasEvent.DRAG_STARTED, false, new Point(touch.globalX, touch.globalY) );
 					}

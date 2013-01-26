@@ -2,7 +2,6 @@
 - Richtungsanzeige erst anzeigen nach DRAG [Hannes]
 // - Framerate anpassen (wenn es "ruckelt", dann Zeit begrenzen auf 25 Tausendstel)
 - Sound ausstellen können [Hannes]
-- game over anzeige + neustart [Herm]
 - Icon & Splash Screens [Herm]
  
 - KI einbauen [ALL]

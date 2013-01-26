@@ -355,6 +355,7 @@ package com.giantmo.bananas.controller
 		{
 			// show the game over screen
 			this._bananas._gameOverScreen.model = _model;
+			this._soundController.playSound(SoundController.GORILLA_WINS);
 			this._bananas.showGameOverScreen();			
 		}
 		
@@ -409,8 +410,7 @@ package com.giantmo.bananas.controller
 				trace("Drag started at ", position );	
 				_model.bananaThrow.startPoint = position;
 								
-				// set initial values
-				_model.powerBar.gorillaIsAiming = true;
+				// set initial values				
 				_model.powerBar.owningGorillaPosition = _model.getActiveGorilla().bounds.topLeft;
 				_model.bananaThrow.aimingAngle = 0;
 				_model.bananaThrow.aimingForce = 0;
@@ -424,6 +424,8 @@ package com.giantmo.bananas.controller
 				// play throw started sound once
 				if (!_model.bananaThrow.inDragPhase)
 				{
+					// now show the bar also
+					_model.powerBar.gorillaIsAiming = true;
 					_soundController.playSound(SoundController.GORILLA_THROW_STARTED);
 					_model.bananaThrow.inDragPhase = !_model.bananaThrow.inDragPhase;
 				}
