@@ -163,7 +163,7 @@ package com.giantmo.bananas.controller
 		{
 			for each (var cloud : Cloud in _clouds ) 
 			{
-				if (((cloud.position.x + Cloud.WIDTH) < -5) ||
+				if (((cloud.position.x + Cloud.FRONT_WIDTH) < -5) ||
 					(cloud.position.x > (Constants.WORLD_BOUNDARY.width + 5)))
 				{
 					dispatchEventWith( BananasEvent.CLOUD_LEFT_THE_WORLD, false, cloud);

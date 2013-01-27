@@ -17,9 +17,10 @@ package com.giantmo.bananas.view
 		
 		public function CloudView() 
 		{
-			_image = new Image( Assets.cloud );
-			_image.width = Cloud.WIDTH;
-			_image.height = Cloud.HEIGHT;
+			
+			_image = new Image( Assets.cloud1_front );
+			_image.width = Cloud.FRONT_WIDTH;
+			_image.height = Cloud.FRONT_HEIGHT;
 			this.addChild( _image );
 		}
 		

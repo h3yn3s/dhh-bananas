@@ -565,8 +565,8 @@ package com.giantmo.bananas.controller
 		{
 			if (cloud.position.x > Constants.WORLD_BOUNDARY.width)
 			{
-				cloud.position.x = 0 - Cloud.WIDTH;
-			} else if (cloud.position.x < (0 - Cloud.WIDTH)) {
+				cloud.position.x = 0 - Cloud.FRONT_WIDTH;
+			} else if (cloud.position.x < (0 - Cloud.FRONT_WIDTH)) {
 				cloud.position.x = Constants.WORLD_BOUNDARY.width;
 			}
 		}

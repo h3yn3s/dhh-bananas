@@ -18,7 +18,11 @@ package com.giantmo.bananas.model
 		public static const BANANA_SPEED_MODIFIER : Number = 5;
 		public static const GORILLA_TOUCH_RADIUS : Number = 70;
 		public static const GORILLA_ARM_REPOSITION_SPEED : Number = 450;
-		public static const MAX_GORILLA_LIVES : int = 1;
+		public static const MAX_GORILLA_LIVES : int = 3;
+		
+		public static const CLOUD_FRONT_SPEED : Number = 1.0;
+		public static const CLOUD_MIDDLE_SPEED : Number = 0.6;
+		public static const CLOUD_BACK_SPEED : Number = 0.4;
 		
 		public static const AI_MIN_FORCE : Number = 0.5;
 		public static const AI_FORCE_RANGE : Number = 0.07;

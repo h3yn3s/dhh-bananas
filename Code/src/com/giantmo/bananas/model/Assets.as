@@ -74,6 +74,60 @@ package com.giantmo.bananas.model
 			return getTexture( "cloud" ); 
 		}
 		
+		/** Get the cloud texture. */
+		public static function get cloud1_front() : Texture
+		{
+			return getTexture( "cloud1_front" ); 
+		}
+		
+		/** Get the cloud texture. */
+		public static function get cloud2_front() : Texture
+		{
+			return getTexture( "cloud2_front" ); 
+		}
+		
+		/** Get the cloud texture. */
+		public static function get cloud3_front() : Texture
+		{
+			return getTexture( "cloud3_front" ); 
+		}
+		
+		/** Get the cloud texture. */
+		public static function get cloud1_middle() : Texture
+		{
+			return getTexture( "cloud1_middle" ); 
+		}
+		
+		/** Get the cloud texture. */
+		public static function get cloud2_middle() : Texture
+		{
+			return getTexture( "cloud2_middle" ); 
+		}
+		
+		/** Get the cloud texture. */
+		public static function get cloud3_middle() : Texture
+		{
+			return getTexture( "cloud3_middle" ); 
+		}
+		
+		/** Get the cloud texture. */
+		public static function get cloud1_back() : Texture
+		{
+			return getTexture( "cloud1_back" ); 
+		}
+		
+		/** Get the cloud texture. */
+		public static function get cloud2_back() : Texture
+		{
+			return getTexture( "cloud2_back" ); 
+		}
+		
+		/** Get the cloud texture. */
+		public static function get cloud3_back() : Texture
+		{
+			return getTexture( "cloud3_back" ); 
+		}
+		
 		/** Get the explosion erase texture. */
 		public static function get explosion() : Texture
 		{

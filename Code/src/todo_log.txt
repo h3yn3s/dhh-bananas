@@ -1,7 +1,4 @@
-﻿REQUIRED
-- Splash Screens [Herm]
- 
-NICE
+﻿NICE
 - soundübergang flüssiger machen (mehrere soundchannel)
 - sound faden, hintergrundmusik einblenden und faden, falls es sound im vordergrund gibt
 - multiple cloud layers (hinten langsamer als vorne)
