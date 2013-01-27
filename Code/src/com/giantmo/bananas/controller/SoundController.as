@@ -56,6 +56,12 @@ package com.giantmo.bananas.controller
 		
 		public function playSound ( key : String ) : void 
 		{
+			// ensure that the losing / game over screen starts
+			if (key == GORILLA_LOST) 
+			{
+				_losePlaying = true;
+			}
+			
 			if ( _model.bananaSound.playing )
 			{
 				switch (key) 
@@ -76,8 +82,7 @@ package com.giantmo.bananas.controller
 						_soundChannel = Assets.soundGorillaGotHit.play();
 						break;
 					case GORILLA_LOST: 
-						_soundChannel = Assets.soundGorillaLost.play();
-						_losePlaying = true;
+						_soundChannel = Assets.soundGorillaLost.play();						
 						break;
 					case GORILLA_WINS: 
 						_soundChannel = Assets.soundGorillaWins.play();

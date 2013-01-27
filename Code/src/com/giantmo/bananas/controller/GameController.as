@@ -613,33 +613,5 @@ package com.giantmo.bananas.controller
 			// make game active
 			_model.gameActive = true;
 		}
-		
-		protected function ai_dragReleasedHandler(event : Event, data : Object) : void
-		{
-			if (!_model.bananaThrow.bananaFlying && _model.bananaThrow.startPoint != null )
-			{
-				_model.powerBar.gorillaIsAiming = false; // not aiming any more
-				
-				// spawn a banana with the settings
-				this.spawnBanana( 
-					_model.currentPlayer, 
-					_bananas.gorrilaViews[_model.currentPlayer].localToGlobal( PowerBar.POWER_BAR_ORIGIN ), 
-					new Point( data.velocity.x, data.velocity.y )
-				);
-				
-				// stop the current sound (so that throw starte & released do not overlap)
-				_soundController.stopSound(SoundController.GORILLA_THROW_STARTED);
-				
-				// play the sound for throw released
-				_soundController.playSound(SoundController.GORILLA_THROW_RELEASED);			
-				// play the sound for a flying banana
-				_soundController.playSound(SoundController.BANANA_FLYING);
-				
-				// draggedOnce is true again...
-				_model.bananaThrow.inDragPhase = !_model.bananaThrow.inDragPhase; 
-				
-				_model.bananaThrow.startPoint = null;
-			}
-		}
 	}
 }
