@@ -1,11 +1,6 @@
 ﻿REQUIRED
-- Icon & Splash Screens [Herm]
+- Splash Screens [Herm]
  
-- KI einbauen [ALL]
- - basierend auf selektion im start bildschirm
- - 1) Winkel und stärke berechnen (Flugbahn mit Wind) - Fehlerfaktor...
- - 2) "Aiming" simulieren und banane los lassen
-
 NICE
 - soundübergang flüssiger machen (mehrere soundchannel)
 - sound faden, hintergrundmusik einblenden und faden, falls es sound im vordergrund gibt
