@@ -244,11 +244,6 @@ package com.giantmo.bananas.controller
 			_model.bananaThrow.bananaFlying = true;
 			
 			_bananas.bananaView.update();
-			
-			// play the sound for throw released
-			_soundController.playSound(SoundController.GORILLA_THROW_RELEASED);			
-			// play the sound for a flying banana
-			_soundController.playSound(SoundController.BANANA_FLYING);
 		}
 		
 		public function spawnGorilla(id : int, position : Point) : void
@@ -393,6 +388,11 @@ package com.giantmo.bananas.controller
 				
 				// stop the current sound (so that throw starte & released do not overlap)
 				_soundController.stopSound(SoundController.GORILLA_THROW_STARTED);
+				
+				// play the sound for throw released
+				_soundController.playSound(SoundController.GORILLA_THROW_RELEASED);			
+				// play the sound for a flying banana
+				_soundController.playSound(SoundController.BANANA_FLYING);
 				
 				// draggedOnce is true again...
 				_model.bananaThrow.inDragPhase = !_model.bananaThrow.inDragPhase; 

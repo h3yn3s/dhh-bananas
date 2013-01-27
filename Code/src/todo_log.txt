@@ -1,6 +1,4 @@
 ﻿REQUIRED
-// - Framerate anpassen (wenn es "ruckelt", dann Zeit begrenzen auf 25 Tausendstel)
-- Sound ausstellen können [Hannes]
 - Icon & Splash Screens [Herm]
  
 - KI einbauen [ALL]
@@ -18,3 +16,4 @@ NICE
  - Wolken
  - Hochhäuser
 - Banane sollte sich drehen, wenn man wirft (Pivot Punkt?)
+- Wurfsound wenn der Spieler wirft
