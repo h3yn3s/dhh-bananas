@@ -31,5 +31,9 @@ package com.giantmo.bananas.controller
 		
 		/** Notify when the start screen should be displayed (again) */
 		public static const RESTART_GAME : String = "restartGame";
+		
+		/** Notify when the sound button was pressed */
+		public static const SOUND_PRESSED : String = "soundPressed";
+		
 	}
 }

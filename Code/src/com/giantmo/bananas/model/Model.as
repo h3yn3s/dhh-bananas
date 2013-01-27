@@ -15,6 +15,7 @@ package com.giantmo.bananas.model
 		public var powerBar		: PowerBar;
 		
 		public var wind : Wind;
+		public var bananaSound : BananaSound;
 		
 		public var currentPlayer : int; // ID of the current player
 				
@@ -54,6 +55,8 @@ package com.giantmo.bananas.model
 			];
 			
 			wind = new Wind();
+			
+			bananaSound = new BananaSound();
 			
 			// explosions
 			explosions = new Vector.<Explosion>();

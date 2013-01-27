@@ -140,6 +140,18 @@ package com.giantmo.bananas.model
 			return getTexture( "again_button" ); 
 		}
 		
+		/** Sound On texture. */
+		public static function get soundOn() : Texture
+		{
+			return getTexture( "sound_on" ); 
+		}
+		
+		/** Sound Off texture. */
+		public static function get soundOff() : Texture
+		{
+			return getTexture( "sound_off" ); 
+		}
+		
 		/** Get a texture form the buffer or create it. */
 		private static function getTexture(key : String, region : Rectangle = null) : Texture
 		{

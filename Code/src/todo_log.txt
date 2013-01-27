@@ -1,5 +1,4 @@
 ﻿REQUIRED
-- Richtungsanzeige erst anzeigen nach DRAG [Hannes]
 // - Framerate anpassen (wenn es "ruckelt", dann Zeit begrenzen auf 25 Tausendstel)
 - Sound ausstellen können [Hannes]
 - Icon & Splash Screens [Herm]

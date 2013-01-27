@@ -4,6 +4,7 @@ package com.giantmo.bananas.controller
 	import com.giantmo.bananas.model.Model;
 	import flash.media.Sound;
 	import flash.media.SoundChannel;
+	import flash.media.SoundTransform;
 	import starling.events.EventDispatcher;
 	/**
 	 * ...
@@ -22,6 +23,8 @@ package com.giantmo.bananas.controller
 		public static const GORILLA_THROW_RELEASED : String = new String ( "gorillaThrowReleased" );
 		
 		private var _soundChannel : SoundChannel;
+		private var _soundTransform : SoundTransform;
+		private var _model : Model;
 		
 		// gorilla wins sound duration
 		private var _loseDuration : Number;
@@ -30,11 +33,13 @@ package com.giantmo.bananas.controller
 		public function SoundController( model : Model) 
 		{
 			_soundChannel = new SoundChannel();
+			_soundTransform = new SoundTransform();
 			_losePlaying = false;
 			_loseDuration = 0;
+			_model = model;
 		}
 		
-		public function tick(timePassed : Number ):void 
+		public function tick(timePassed : Number ) : void 
 		{
 			// if someone won the game, the winning theme plays
 			if (_losePlaying) {				
@@ -51,41 +56,57 @@ package com.giantmo.bananas.controller
 		
 		public function playSound ( key : String ) : void 
 		{
-			switch (key) 
+			if ( _model.bananaSound.playing )
 			{
-				case BANANA_THEME: 
-					_soundChannel = Assets.soundBananaTheme.play();										
-					break;
-				case BANANA_FLYING: 
-					_soundChannel = Assets.soundBananaFlying.play();
-					break;
-				case EXPLOSION: 
-					_soundChannel = Assets.soundExplosion.play();
-					break;
-				case GORILLA_FALLING: 
-					_soundChannel = Assets.soundGorillaFalling.play();
-					break;
-				case GORILLA_GOT_HIT: 
-					_soundChannel = Assets.soundGorillaGotHit.play();
-					break;
-				case GORILLA_LOST: 
-					_soundChannel = Assets.soundGorillaLost.play();
-					_losePlaying = true;
-					break;
-				case GORILLA_WINS: 
-					_soundChannel = Assets.soundGorillaWins.play();
-					break;
-				case GORILLA_THROW_RELEASED: 
-					_soundChannel = Assets.soundGorillaThrowReleased.play();
-					break;
-				case GORILLA_THROW_STARTED: 
-					_soundChannel = Assets.soundGorillaThrowStarted.play();
-					break;
-				
-				default:
+				switch (key) 
+				{
+					case BANANA_THEME: 
+						_soundChannel = Assets.soundBananaTheme.play();										
+						break;
+					case BANANA_FLYING: 
+						_soundChannel = Assets.soundBananaFlying.play();
+						break;
+					case EXPLOSION: 
+						_soundChannel = Assets.soundExplosion.play();
+						break;
+					case GORILLA_FALLING: 
+						_soundChannel = Assets.soundGorillaFalling.play();
+						break;
+					case GORILLA_GOT_HIT: 
+						_soundChannel = Assets.soundGorillaGotHit.play();
+						break;
+					case GORILLA_LOST: 
+						_soundChannel = Assets.soundGorillaLost.play();
+						_losePlaying = true;
+						break;
+					case GORILLA_WINS: 
+						_soundChannel = Assets.soundGorillaWins.play();
+						break;
+					case GORILLA_THROW_RELEASED: 
+						_soundChannel = Assets.soundGorillaThrowReleased.play();
+						break;
+					case GORILLA_THROW_STARTED: 
+						_soundChannel = Assets.soundGorillaThrowStarted.play();
+						break;
+					
+					default:
+				}
 			}
 		}
 			
+		public function muteSound () : void 
+		{
+			_soundTransform.volume = 0;
+			this._soundChannel.soundTransform = _soundTransform;			
+			
+		}
+		
+		public function unmuteSound () : void 
+		{
+			_soundTransform.volume = 1;
+			this._soundChannel.soundTransform = _soundTransform;			
+		}
+		
 		public function stopSound ( key : String ) : void 
 		{
 			_soundChannel.stop();
@@ -119,6 +140,8 @@ package com.giantmo.bananas.controller
 				default:
 			}*/
 		}
+		
+		
 	}
 
 }

@@ -27,6 +27,8 @@ package com.giantmo.bananas.view
 		public var explosionViews : Vector.<ExplosionView>;
 		public var cloudViews 	  : Vector.<CloudView>;
 		public var powerBarView	  : PowerBarView;
+		public var soundView	  : SoundView;
+		public var _gameOverScreen : GameOverScreen;
 		
 		public var _cloudLayer 		: Sprite;
 		public var _gorillaLayer 	: Sprite;
@@ -34,7 +36,7 @@ package com.giantmo.bananas.view
 		public var _buildingLayer 			: Image;
 		public var _buildingLayerTexture	: RenderTexture;
 		public var _powerBarLayer 	: Sprite;
-		public var _gameOverScreen : GameOverScreen;
+		public var _soundViewLayer : Sprite;
 		
 		private var _explosionPool : ObjectPool;
 		
@@ -111,7 +113,12 @@ package com.giantmo.bananas.view
 			
 			// create gameOverScreen
 			_gameOverScreen = new GameOverScreen();
-						
+
+			// sound view layer
+			soundView = new SoundView();
+			_soundViewLayer = new Sprite();
+			_soundViewLayer.addChild(soundView);
+			
 			// add layers as children
 			this.addChild( _cloudLayer );		// clouds
 			this.addChild( _buildingLayer );	// buildings
@@ -119,6 +126,7 @@ package com.giantmo.bananas.view
 			this.addChild( _gorillaLayer );		// gorillas
 			this.addChild( _powerBarLayer );	// power bar
 			this.addChild( _bananaLayer );		// banana
+			this.addChild( _soundViewLayer );
 		}
 		
 		public function clean() : void

@@ -68,6 +68,7 @@ package com.giantmo.bananas.controller
 			_touchController.addEventListener( BananasEvent.DRAG_RELEASED, touch_dragReleasedHandler);
 			_touchController.addEventListener( BananasEvent.DRAG_STARTED, touch_dragStartedHandler);
 			_touchController.addEventListener( BananasEvent.DRAGGED, touch_draggedHandler);
+			_touchController.addEventListener( BananasEvent.SOUND_PRESSED, touch_soundPressedHandler);
 			
 			_soundController = new SoundController( model );
 			_soundController.addEventListener( BananasEvent.GAME_OVER, sound_gameOverHandler );
@@ -192,6 +193,9 @@ package com.giantmo.bananas.controller
 			// add gorillas
 			spawnGorilla( 0, new Point( _model.buildings[1].bounds.x + _model.buildings[1].bounds.width / 2, _model.buildings[1].bounds.y));
 			spawnGorilla( 1, new Point( _model.buildings[6].bounds.x + _model.buildings[6].bounds.width / 2, _model.buildings[6].bounds.y));
+			
+			// add the sound to the view
+			_bananas.soundView.data = _model.bananaSound;
 			
 			// set current player
 			_model.currentPlayer = 1;
@@ -464,6 +468,23 @@ package com.giantmo.bananas.controller
 			}
 		}
 
+		protected function touch_soundPressedHandler(event : Event) : void 
+		{
+			// mute / unmute the sound
+			_model.bananaSound.playing = !_model.bananaSound.playing;
+			
+			// mute / unmute all sounds
+			if (!_model.bananaSound.playing)
+			{
+				_soundController.muteSound();			
+			} else {
+				_soundController.unmuteSound();
+			}
+			
+			// change the sound icon
+			_bananas.soundView.switchSoundDisplay();
+		}
+		
 		protected function collision_bananaOutOfWorld(event : Event) : void
 		{
 			// remove the banana
