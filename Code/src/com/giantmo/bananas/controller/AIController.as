@@ -1,6 +1,7 @@
 package com.giantmo.bananas.controller
 {
 	import com.giantmo.bananas.model.Constants;
+	import flash.geom.Point;
 	
 	import flash.utils.setTimeout;
 	
@@ -41,7 +42,7 @@ package com.giantmo.bananas.controller
 		public function playMove() : void
 		{
 			trace( "AI IS GOING TO PLAY A MOVE" );
-			setTimeout( play, 500 ); // timeout to wait 0.5 second
+			setTimeout( play, 1000 ); // timeout to wait 1 second
 		}
 		
 		// ======================================
@@ -49,16 +50,20 @@ package com.giantmo.bananas.controller
 		// ======================================
 		private function play() : void
 		{
-			// for now, calculate random force (0-1)
-			var force : Number = Math.random();
+			// force should be anything between 0.5 & 0.57
+			var force : Number = Constants.AI_MIN_FORCE + (Math.random() * Constants.AI_FORCE_RANGE);
 			
-			// for now, calculate random angle that is ok in average
-			var angle : Number = deg2rad( -90 );
+			// compute velocity for the throw
+			// x from -150 to -110
+			// y from -150 to -10
+			var x : Number = Constants.AI_VELOCITY_X + (Constants.AI_VELOCITY_X_DEVIATION - (Math.random() * (Constants.AI_VELOCITY_X_DEVIATION * 2)));
+			var y : Number = Constants.AI_VELOCITY_Y + (Constants.AI_VELOCITY_Y_DEVIATION - (Math.random() * (Constants.AI_VELOCITY_Y_DEVIATION * 2)));
+			var velocity : Point = new Point(x, y);
 			
-			trace( "WILL DRAG AT ANGLE", angle, "WITH FORCE", force );
+			trace( "WILL DRAG USING FORCE", force, "USING VELOCITY", velocity );
 			
 			// dispatch the event to release a banana
-			this.dispatchEventWith( BananasEvent.DRAG_RELEASED, false, {force : force, angle : angle} );
+			this.dispatchEventWith( BananasEvent.DRAG_RELEASED, false, {force : force, velocity : velocity} );
 		}
 		
 		// ======================================

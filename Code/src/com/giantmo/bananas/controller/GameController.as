@@ -613,10 +613,10 @@ package com.giantmo.bananas.controller
 		{
 			var startPoint : Point = _bananas.gorrilaViews[_model.currentPlayer].localToGlobal( PowerBar.POWER_BAR_ORIGIN );
 			
-			var velocityX : Number = (Constants.MAX_DRAG_FORCE_AXIS * data.force) * Math.cos( rad2deg(data.angle) );
-			var velocityY : Number = (Constants.MAX_DRAG_FORCE_AXIS * data.force) * Math.sin( rad2deg(data.angle) );
+			//var velocityX : Number = (Constants.MAX_DRAG_FORCE_AXIS * data.force) * Math.cos( rad2deg(data.angle) );
+			//var velocityY : Number = (Constants.MAX_DRAG_FORCE_AXIS * data.force) * Math.sin( rad2deg(data.angle) );
 			
-			trace("START POINT", startPoint, data.angle, data.force, (Constants.MAX_DRAG_FORCE_AXIS * data.force), velocityX, velocityY);
+			//trace("START POINT", startPoint, data.angle, data.force, (Constants.MAX_DRAG_FORCE_AXIS * data.force), velocityX, velocityY);
 			
 			//SPAWN A BANANA AT (x=910, y=571)
 			
@@ -626,7 +626,7 @@ package com.giantmo.bananas.controller
 			this.spawnBanana( 
 				_model.currentPlayer, 
 				_bananas.gorrilaViews[_model.currentPlayer].localToGlobal( PowerBar.POWER_BAR_ORIGIN ), 
-				new Point( velocityX, velocityY )
+				new Point( data.velocity.x, data.velocity.y )
 			);
 		}
 	}

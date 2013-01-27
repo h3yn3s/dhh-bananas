@@ -14,5 +14,3 @@ NICE
 - Grafiken überarbeiten
  - Wolken
  - Hochhäuser
-- Banane sollte sich drehen, wenn man wirft (Pivot Punkt?)
-

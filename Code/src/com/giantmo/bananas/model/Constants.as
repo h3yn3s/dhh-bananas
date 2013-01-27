@@ -20,6 +20,13 @@ package com.giantmo.bananas.model
 		public static const GORILLA_ARM_REPOSITION_SPEED : Number = 450;
 		public static const MAX_GORILLA_LIVES : int = 1;
 		
+		public static const AI_MIN_FORCE : Number = 0.5;
+		public static const AI_FORCE_RANGE : Number = 0.07;
+		public static const AI_VELOCITY_X : Number = -130;
+		public static const AI_VELOCITY_X_DEVIATION : Number = 20;
+		public static const AI_VELOCITY_Y : Number = -80;
+		public static const AI_VELOCITY_Y_DEVIATION : Number = 70;
+		
 		public static const MAX_DRAG_FORCE_AXIS : Number = 200; // drag max 100px on x and y axis
 		public static const MAX_DRAG_FORCE 		: Number = Math.sqrt( (MAX_DRAG_FORCE_AXIS * MAX_DRAG_FORCE_AXIS) + (MAX_DRAG_FORCE_AXIS * MAX_DRAG_FORCE_AXIS) ); // max angled force sqrt(x² + y²)
 		
