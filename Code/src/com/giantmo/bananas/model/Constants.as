@@ -26,6 +26,7 @@ package com.giantmo.bananas.model
 		public static const AI_VELOCITY_X_DEVIATION : Number = 20;
 		public static const AI_VELOCITY_Y : Number = -80;
 		public static const AI_VELOCITY_Y_DEVIATION : Number = 70;
+		public static const AI_TIME_TO_AIM : Number = 1.5;
 		
 		public static const MAX_DRAG_FORCE_AXIS : Number = 200; // drag max 100px on x and y axis
 		public static const MAX_DRAG_FORCE 		: Number = Math.sqrt( (MAX_DRAG_FORCE_AXIS * MAX_DRAG_FORCE_AXIS) + (MAX_DRAG_FORCE_AXIS * MAX_DRAG_FORCE_AXIS) ); // max angled force sqrt(x² + y²)
