@@ -49,7 +49,7 @@ package com.giantmo.bananas.view
 			
 			this.x = data.bounds.x + this.pivotX;
 			this.y = data.bounds.y + this.pivotY;
-			//this.rotation = data.rotation;
+			this.rotation = data.rotation;
 		}
 		
 		private function updateBorder():void

@@ -7,7 +7,6 @@
  - 2) "Aiming" simulieren und banane los lassen
 
 NICE
-- Sounds ggf. in eine mp3 komprimieren?
 - soundübergang flüssiger machen (mehrere soundchannel)
 - sound faden, hintergrundmusik einblenden und faden, falls es sound im vordergrund gibt
 - multiple cloud layers (hinten langsamer als vorne)
@@ -16,4 +15,4 @@ NICE
  - Wolken
  - Hochhäuser
 - Banane sollte sich drehen, wenn man wirft (Pivot Punkt?)
-- Wurfsound wenn der Spieler wirft
+

@@ -44,7 +44,12 @@ package com.giantmo.bananas.controller
 				
 				_banana.bounds.x += _bananaThrow.velocity.x * timePassed * Constants.BANANA_SPEED_MODIFIER;
 				_banana.bounds.y += _bananaThrow.velocity.y * timePassed * Constants.BANANA_SPEED_MODIFIER;
-				_banana.rotation += deg2rad(50 * timePassed);
+				if (_banana.owner == Constants.PLAYER_1)
+				{
+					_banana.rotation += deg2rad(500 * timePassed);
+				} else {
+					_banana.rotation += deg2rad(-500 * timePassed);
+				}
 			}
 				
 			// move the clouds
