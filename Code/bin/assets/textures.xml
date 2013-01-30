@@ -1,34 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:463e405bc36a15e3de5bc430b9b80674$ -->
+<!-- $TexturePacker:SmartUpdate:e689ce04aa4cda41943193f09726c15b$ -->
 <TextureAtlas imagePath="textures.png">
-    <SubTexture name="Cloud2_back" x="268" y="2" width="83" height="40"/>
-    <SubTexture name="Cloud2_front" x="2" y="182" width="230" height="110"/>
-    <SubTexture name="Cloud2_middle" x="817" y="2" width="138" height="66"/>
-    <SubTexture name="Cloud3_back" x="183" y="2" width="83" height="40"/>
-    <SubTexture name="Cloud3_front" x="731" y="70" width="230" height="110"/>
-    <SubTexture name="Cloud3_middle" x="677" y="2" width="138" height="66"/>
-    <SubTexture name="Gorilla_arm_ingame_small" x="658" y="2" width="17" height="56"/>
-    <SubTexture name="Gorilla_arm_mit_banane_ingame_small" x="639" y="2" width="17" height="56"/>
+    <SubTexture name="Gorilla_arm_ingame_small" x="639" y="2" width="17" height="56"/>
+    <SubTexture name="Gorilla_arm_mit_banane_ingame_small" x="658" y="2" width="17" height="56"/>
     <SubTexture name="Gorilla_ingame_small" x="142" y="70" width="49" height="80"/>
     <SubTexture name="again_button" x="478" y="182" width="430" height="150"/>
     <SubTexture name="banana" x="56" y="2" width="40" height="35"/>
     <SubTexture name="building" x="434" y="1168" width="120" height="450"/>
     <SubTexture name="cloud" x="193" y="70" width="207" height="81"/>
     <SubTexture name="cloud1_back" x="98" y="2" width="83" height="40"/>
-    <SubTexture name="cloud1_front" x="499" y="70" width="230" height="110"/>
-    <SubTexture name="cloud1_middle" x="2" y="70" width="138" height="66"/>
-    <SubTexture name="computer_wins" x="499" y="334" width="495" height="400"/>
+    <SubTexture name="cloud1_front" x="731" y="70" width="230" height="110"/>
+    <SubTexture name="cloud1_middle" x="677" y="2" width="138" height="66"/>
+    <SubTexture name="cloud2_back" x="268" y="2" width="83" height="40"/>
+    <SubTexture name="cloud2_front" x="2" y="182" width="230" height="110"/>
+    <SubTexture name="cloud2_middle" x="817" y="2" width="138" height="66"/>
+    <SubTexture name="cloud3_back" x="183" y="2" width="83" height="40"/>
+    <SubTexture name="cloud3_front" x="499" y="70" width="230" height="110"/>
+    <SubTexture name="cloud3_middle" x="2" y="70" width="138" height="66"/>
+    <SubTexture name="computer_wins" x="2" y="334" width="495" height="400"/>
     <SubTexture name="explosion" x="402" y="70" width="95" height="95"/>
     <SubTexture name="explosion_effect" x="22" y="2" width="32" height="32"/>
     <SubTexture name="grey_pixel" x="2" y="2" width="4" height="4"/>
     <SubTexture name="heart" x="8" y="2" width="12" height="12"/>
-    <SubTexture name="player_1_wins" x="2" y="334" width="495" height="400"/>
-    <SubTexture name="player_2_wins" x="2" y="736" width="495" height="400"/>
+    <SubTexture name="player_1_wins" x="2" y="736" width="495" height="400"/>
+    <SubTexture name="player_2_wins" x="499" y="334" width="495" height="400"/>
     <SubTexture name="powerbar_border" x="496" y="2" width="141" height="44"/>
     <SubTexture name="powerbar_fill" x="353" y="2" width="141" height="44"/>
-    <SubTexture name="pvc_button" x="499" y="736" width="430" height="430"/>
-    <SubTexture name="pvp_button" x="2" y="1168" width="430" height="430"/>
+    <SubTexture name="pvc_button" x="2" y="1168" width="430" height="430"/>
+    <SubTexture name="pvp_button" x="499" y="736" width="430" height="430"/>
     <SubTexture name="sound_off" x="234" y="182" width="120" height="120"/>
     <SubTexture name="sound_on" x="356" y="182" width="120" height="120"/>
 </TextureAtlas>
