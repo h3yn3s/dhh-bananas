@@ -57,13 +57,12 @@ package com.giantmo.bananas.view
 			// create clouds
 			_cloudLayer = new Sprite();
 			_cloudLayer.touchable = false;
-			cloudViews = new <CloudView>[
-				new CloudView(),
-				new CloudView(),
-				new CloudView(),
-				new CloudView(),
-				new CloudView()
-			];
+			// 5 Clouds
+			cloudViews = new Vector.<CloudView>();
+			for (var idx : int = 0; idx < (Constants.NUMBER_OF_BACK_CLOUDS + Constants.NUMBER_OF_FRONT_CLOUDS + Constants.NUMBER_OF_MIDDLE_CLOUDS); idx++)
+			{
+				cloudViews.push(new CloudView());
+			}
 			
 			// create banana
 			_bananaLayer = new Sprite();

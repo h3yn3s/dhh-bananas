@@ -9,12 +9,19 @@ package com.giantmo.bananas.model
 	{
 		public static const WORLD_BOUNDARY : Rectangle = new Rectangle(0, 0, 960, 640);
 		public static const GRAVITY	: Number = 140;
+		
 		public static const MAX_WIND_FORCE : Number = 120;
 		public static const WIND_RESISTANCE : Number = 0.02;
+		public static const WIND_ADJUSTMENT_DURATION : Number = 1.0;
+		
 		public static const NUMBER_OF_BUILDINGS : Number = 8;
-		public static const NUMBER_OF_CLOUDS : Number = 5;
 		public static const BUILDING_MINIMUM_HEIGHT : Number = 150;
 		public static const BUILDING_VARIABLE_HEIGHT : Number = 300;
+		
+		public static const NUMBER_OF_FRONT_CLOUDS : Number = 5;
+		public static const NUMBER_OF_MIDDLE_CLOUDS : Number = 8;
+		public static const NUMBER_OF_BACK_CLOUDS : Number = 13;
+		
 		public static const BANANA_SPEED_MODIFIER : Number = 5;
 		public static const GORILLA_TOUCH_RADIUS : Number = 70;
 		public static const GORILLA_ARM_REPOSITION_SPEED : Number = 450;

@@ -22,6 +22,9 @@ package com.giantmo.bananas.controller
 		private var _bananaThrow : BananaThrow;
 		private var _gorillas : Vector.<Gorilla>;
 		
+		private var windChangedTimer : Number;
+		private var _currentForce : Number;
+		
 		public function MovementController(banana : Banana, clouds : Vector.<Cloud>, wind : Wind, bananaThrow : BananaThrow, gorilla : Vector.<Gorilla> ) 
 		{
 			_banana = banana;
@@ -51,11 +54,29 @@ package com.giantmo.bananas.controller
 					_banana.rotation += deg2rad(-500 * timePassed);
 				}
 			}
-				
+			
+			// compute the intermediate windforce if it has changed recently
+			if (_wind.justChanged)
+			{
+				windChangedTimer = 0;
+				_wind.justChanged = false;
+			} else {
+				if (windChangedTimer < Constants.WIND_ADJUSTMENT_DURATION)
+				{
+					windChangedTimer += timePassed;
+					// the wind changes "slowly" 
+					// during the duration the old force "decreases" and the new force increases
+					_currentForce = ((windChangedTimer / Constants.WIND_ADJUSTMENT_DURATION) * _wind.force) +  
+										((1 - (windChangedTimer / Constants.WIND_ADJUSTMENT_DURATION)) * _wind.oldForce );
+				}  else {
+					_currentForce = _wind.force;
+					
+				}					
+			}				
 			// move the clouds
 			for each (var cloud : Cloud in _clouds) 
-			{
-				cloud.position.x += _wind.force * timePassed;
+			{	
+				cloud.position.x += ( _currentForce * cloud.speed * timePassed);
 			}
 			
 			// move the arm of the gorilla back in position			

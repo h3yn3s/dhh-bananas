@@ -182,19 +182,42 @@ package com.giantmo.bananas.controller
 			// add windForce
 			setWindForce( (Math.random() * Constants.MAX_WIND_FORCE) - (Constants.MAX_WIND_FORCE / 2) );
 						
+			
+			//create the power bar
 			createPowerBar();
 			
-			// add clouds
-			for (idx = 0; idx < Constants.NUMBER_OF_CLOUDS; idx++)
+			// add cloud clouds			
+			for (idx = 0; idx < (Constants.NUMBER_OF_FRONT_CLOUDS + Constants.NUMBER_OF_MIDDLE_CLOUDS + Constants.NUMBER_OF_BACK_CLOUDS); idx++)
 			{
 				// calculate a random height
 				var randomX : Number = int(Math.random() * Constants.WORLD_BOUNDARY.width);
 				// only show clouds in the upper 3/4 of the screen
 				var randomY : Number = int(Math.random() * (Constants.WORLD_BOUNDARY.height - (Constants.WORLD_BOUNDARY.height / 4))); 
+				// type of cloud
+				var cloudType : int = cloudType = Math.random() * 3;
+				// speed
+				var speed : Number = 0;		
+								
+				// layer of cloud
+				var cloudLayer : String = Cloud.FRONT_CLOUD;
+				if (idx < Constants.NUMBER_OF_BACK_CLOUDS)
+				{
+					cloudLayer = Cloud.BACK_CLOUD;
+					speed = Constants.CLOUD_BACK_SPEED;
+				} else if ( idx < (Constants.NUMBER_OF_BACK_CLOUDS + Constants.NUMBER_OF_MIDDLE_CLOUDS))
+				{
+					cloudLayer = Cloud.MIDDLE_CLOUD;
+					speed = Constants.CLOUD_MIDDLE_SPEED;
+				} else {
+					cloudLayer = Cloud.FRONT_CLOUD;
+					speed = Constants.CLOUD_FRONT_SPEED;
+				}
 				
-				// spawn the building at this position
-				spawnCloud(idx, new Point(randomX, randomY));
+				// spawn the building at this position				
+				spawnCloud(idx, new Point(randomX, randomY), cloudLayer, cloudType, speed);
 			}
+			
+			
 			
 			// add gorillas
 			spawnGorilla( 0, new Point( _model.buildings[1].bounds.x + _model.buildings[1].bounds.width / 2, _model.buildings[1].bounds.y));
@@ -297,13 +320,16 @@ package com.giantmo.bananas.controller
 			_bananas.addBuilding( view );			
 		}
 		
-		public function spawnCloud(id : int, position : Point) : void
+		public function spawnCloud(id : int, position : Point, cloudLayer : String, cloudType : int, speed : Number) : void
 		{
 			// get cloud by id
 			var cloud : Cloud = _model.clouds[id];
 			
 			// initialize cloud
 			cloud.position = position;
+			cloud.cloudLayer = cloudLayer;
+			cloud.cloudType = cloudType;	
+			cloud.speed = speed;
 			
 			// set data on view
 			var view : CloudView = _bananas.cloudViews[id];
@@ -343,7 +369,9 @@ package com.giantmo.bananas.controller
 			
 			// update
 			_model.currentPlayer = (_model.currentPlayer + 1) % 2; // 0 or 1
+			_model.wind.oldForce = _model.wind.force;
 			_model.wind.force = (Math.random() * Constants.MAX_WIND_FORCE) - (Constants.MAX_WIND_FORCE / 2);
+			_model.wind.justChanged = true;
 			
 			// activate new gorilla
 			_model.gorillas[_model.currentPlayer].active = true;

@@ -20,7 +20,7 @@ package com.giantmo.bananas.model
 		public var currentPlayer : int; // ID of the current player
 				
 		public var gameActive : Boolean;
-		public var mode : String;
+		public var mode : String;		
 		
 		public function Model() 
 		{
@@ -46,13 +46,11 @@ package com.giantmo.bananas.model
 			];
 			
 			// 5 Clouds
-			clouds 		= new <Cloud>[
-				new Cloud(),
-				new Cloud(),
-				new Cloud(),
-				new Cloud(),
-				new Cloud(),
-			];
+			clouds 		= new Vector.<Cloud>();
+			for (var idx : int = 0; idx < (Constants.NUMBER_OF_BACK_CLOUDS + Constants.NUMBER_OF_FRONT_CLOUDS + Constants.NUMBER_OF_MIDDLE_CLOUDS); idx++)
+			{
+				clouds.push(new Cloud());
+			}			
 			
 			wind = new Wind();
 			
