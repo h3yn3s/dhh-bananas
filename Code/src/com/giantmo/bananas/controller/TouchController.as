@@ -65,7 +65,7 @@ package com.giantmo.bananas.controller
 						var touchPoint : Point = new Point (touch.globalX, touch.globalY);
 						
 						// compute the "central" point of the current gorilla
-						var gorillaMidPoint : Point = new Point ( ( _game.gorrilaViews[_model.currentPlayer].bounds.topLeft.x + 
+						/*var gorillaMidPoint : Point = new Point ( ( _game.gorrilaViews[_model.currentPlayer].bounds.topLeft.x + 
 																	_game.gorrilaViews[_model.currentPlayer].bounds.bottomRight.x) / 2, // that was x
 																  ( _game.gorrilaViews[_model.currentPlayer].bounds.topLeft.y +
 																	_game.gorrilaViews[_model.currentPlayer].bounds.bottomRight.y) / 2); // that was y
@@ -75,9 +75,10 @@ package com.giantmo.bananas.controller
 						var distance : Number = new Number( Math.sqrt( Math.pow((touchPoint.x - gorillaMidPoint.x) , 2) + Math.pow((touchPoint.y - gorillaMidPoint.y) , 2)));
 						
 						if (distance < Constants.GORILLA_TOUCH_RADIUS )
-						{
-							this.dispatchEventWith( BananasEvent.DRAG_STARTED, false, new Point(touch.globalX, touch.globalY) );
-						}
+						{*/
+						// New stuff: Drag from anywhere possible
+						this.dispatchEventWith( BananasEvent.DRAG_STARTED, false, new Point(touch.globalX, touch.globalY) );
+						//}
 					}
 					break;
 				case TouchPhase.MOVED : 

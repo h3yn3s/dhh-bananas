@@ -1,8 +1,28 @@
 ﻿
-- soundübergang flüssiger machen (mehrere soundchannel)
-- sound faden, hintergrundmusik einblenden und faden, falls es sound im vordergrund gibt
-- multiple cloud layers (hinten langsamer als vorne)
-- Multiple KI Schwierigkeiten
-- Grafiken überarbeiten
- - Wolken
- - Hochhäuser
+Offene Funktionalitäten
+ DONE 2tes Männchen ist rechts abgeschnitten
+ DONE Wolken überarbeiten
+ DONE Eigene Playerbuttons (Player / Computer) erstellen
+ DONE Überall drücken / ziehen erlauben
+ 
+ Splashscreen bis zum Start beibehalten 
+ Hochhäuser überarbeiten (hell / dunkle Fenster)
+ Bananen-Splash Effekt bei Treffer auf Affe
+ Bounding Box für Banane / Affe mittig treffen lassen
+ 
+Deployment ToDos
+ iOS als Erstes
+ 
+Balla Bananas 
+Beschreibung: 4000 Characters
+Keywords: 
+Support URL: 
+Review Notes: wenn die was besonderes beachten sollen
+App Icons in:
+	1024x1024
+iPhone Ingame Icons 5 Stück
+	in 960x640 und 
+	in 1136 x600
+iPad
+	in 1024x768
+

@@ -10,7 +10,7 @@ package com.giantmo.bananas.model
 	public class Gorilla 
 	{
 		// CONSTANTS
-		public static const WIDTH  : Number = 49;
+		public static const WIDTH  : Number = 50;
 		public static const HEIGHT : Number = 80;
 		
 		public static const ARM_X : Number = 5;

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Created with TexturePacker http://texturepacker.com-->
-<!-- $TexturePacker:SmartUpdate:e689ce04aa4cda41943193f09726c15b$ -->
+<!-- $TexturePacker:SmartUpdate:170bd63cd5076b42b10b8ad32e773a3a$ -->
 <TextureAtlas imagePath="textures.png">
     <SubTexture name="Gorilla_arm_ingame_small" x="639" y="2" width="17" height="56"/>
     <SubTexture name="Gorilla_arm_mit_banane_ingame_small" x="658" y="2" width="17" height="56"/>
